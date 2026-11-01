@@ -1,0 +1,4089 @@
+{
+  "schema_version": 1,
+  "title": "开源组件工具集",
+  "curated_on": "2026-11-01",
+  "description": "按场景整理 Web UI、Flutter UI 和 Flutter 常用包。版本及平台信息为采集快照，支持以官方文档为准。",
+  "recipes": [
+    {
+      "id": "flutter-start",
+      "name": "Flutter 应用起步",
+      "description": "路由 · 状态 · 网络 · 数据模型 · 偏好存储",
+      "items": [
+        "tdesign-flutter",
+        "go-router",
+        "flutter-riverpod",
+        "dio",
+        "freezed",
+        "json-serializable",
+        "build-runner",
+        "shared-preferences"
+      ],
+      "note": "状态管理也可换用 flutter_bloc；Freezed 和 JSON 生成器需对应注解包。"
+    },
+    {
+      "id": "react-admin",
+      "name": "React 企业后台",
+      "description": "从腾讯、字节与蚂蚁方案中选一个设计体系",
+      "items": [
+        "ant-design",
+        "ant-pro",
+        "td-react",
+        "arco-react",
+        "semi"
+      ],
+      "note": "这些是候选方案，不建议在同一应用混装多套完整组件体系。"
+    },
+    {
+      "id": "web3-dapp",
+      "name": "Web3 DApp",
+      "description": "以 Ant Design Web3 为起点",
+      "items": [
+        "ant-web3",
+        "ant-design"
+      ],
+      "note": "继续按目标链配置适配器与钱包；UI 不提供资金安全保证。"
+    },
+    {
+      "id": "flutter-desktop",
+      "name": "Flutter 桌面工具",
+      "description": "平台风格 · 文件 · 本地数据 · 布局适配",
+      "items": [
+        "fluent-ui",
+        "macos-ui",
+        "file-picker",
+        "path-provider",
+        "drift",
+        "responsive-framework"
+      ],
+      "note": "Fluent 与 macOS UI 是风格备选；插件平台支持需逐项核对。"
+    }
+  ],
+  "items": [
+    {
+      "id": "ant-design",
+      "name": "Ant Design",
+      "kind": "web",
+      "package": "antd",
+      "manager": "npm",
+      "origin": "alibaba",
+      "owner": "蚂蚁集团 / Ant Design",
+      "frameworks": [
+        "React"
+      ],
+      "category": "企业后台",
+      "homepage": "https://ant.design/",
+      "repository": "https://github.com/ant-design/ant-design",
+      "description": "企业级 React 组件体系，覆盖表格、表单、弹层与主题。",
+      "best_for": "中后台、数据密集型业务和已有 Ant Design 规范的团队。",
+      "caution": "安装前确认 React 主版本；大版本升级需按迁移指南核对主题与 API。",
+      "featured": true,
+      "tags": [
+        "企业后台",
+        "蚂蚁集团 / Ant Design",
+        "React"
+      ],
+      "install": "npm install antd",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/antd/latest",
+        "version": "6.6.8",
+        "license": "MIT",
+        "peer_dependencies": {
+          "react": ">=18.0.0",
+          "react-dom": ">=18.0.0"
+        },
+        "deprecated": "",
+        "registry_description": "An enterprise-class UI design language and React components implementation"
+      }
+    },
+    {
+      "id": "ant-web3",
+      "name": "Ant Design Web3",
+      "kind": "web",
+      "package": "@ant-design/web3",
+      "manager": "npm",
+      "origin": "alibaba",
+      "owner": "Ant Design / ZAN 社区",
+      "frameworks": [
+        "React"
+      ],
+      "category": "Web3",
+      "homepage": "https://web3.ant.design/",
+      "repository": "https://github.com/ant-design/ant-design-web3",
+      "description": "面向 DApp 的钱包连接、地址、代币与 NFT 等界面组件。",
+      "best_for": "使用 Ant Design 的 Web3 网站与多链钱包界面。",
+      "caution": "UI 组件不承担钱包安全、链上交易确认或合约审计；需选对应链适配器。",
+      "featured": true,
+      "tags": [
+        "Web3",
+        "Ant Design / ZAN 社区",
+        "React"
+      ],
+      "install": "npm install @ant-design/web3",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/%40ant-design%2Fweb3/latest",
+        "version": "1.26.1",
+        "license": "MIT",
+        "peer_dependencies": {
+          "antd": ">=5.0.0",
+          "react": ">=17.0.0",
+          "react-dom": ">=17.0.0"
+        },
+        "deprecated": "",
+        "registry_description": "[https://web3.ant.design](https://web3.ant.design)"
+      },
+      "license_review": {
+        "label": "MIT",
+        "source": "https://github.com/ant-design/ant-design-web3/blob/main/LICENSE",
+        "checked_on": "2026-11-01"
+      }
+    },
+    {
+      "id": "ant-pro",
+      "name": "ProComponents",
+      "kind": "web",
+      "package": "@ant-design/pro-components",
+      "manager": "npm",
+      "origin": "alibaba",
+      "owner": "Ant Design 社区",
+      "frameworks": [
+        "React"
+      ],
+      "category": "企业后台",
+      "homepage": "https://procomponents.ant.design/",
+      "repository": "https://github.com/ant-design/pro-components",
+      "description": "在 Ant Design 上封装 ProTable、ProForm 等业务组件。",
+      "best_for": "搜索表格、复杂业务表单、管理后台。",
+      "caution": "依赖 Ant Design；通用封装之外的业务行为仍需自行实现。",
+      "featured": false,
+      "tags": [
+        "企业后台",
+        "Ant Design 社区",
+        "React"
+      ],
+      "install": "npm install @ant-design/pro-components",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/%40ant-design%2Fpro-components/latest",
+        "version": "2.8.10",
+        "license": "MIT",
+        "peer_dependencies": {
+          "antd": "^4.24.15 || ^5.11.2",
+          "react": ">=17.0.0",
+          "react-dom": ">=17.0.0"
+        },
+        "deprecated": "",
+        "registry_description": "@ant-design/pro-components"
+      }
+    },
+    {
+      "id": "ant-mobile",
+      "name": "Ant Design Mobile",
+      "kind": "web",
+      "package": "antd-mobile",
+      "manager": "npm",
+      "origin": "alibaba",
+      "owner": "蚂蚁集团 / Ant Design",
+      "frameworks": [
+        "React"
+      ],
+      "category": "移动端",
+      "homepage": "https://mobile.ant.design/",
+      "repository": "https://github.com/ant-design/ant-design-mobile",
+      "description": "适合触屏的 React 移动 Web 组件。",
+      "best_for": "H5 活动、移动业务系统和手机网页。",
+      "caution": "这是 Web 组件，不是 Flutter 或 React Native 组件。",
+      "featured": false,
+      "tags": [
+        "移动端",
+        "蚂蚁集团 / Ant Design",
+        "React"
+      ],
+      "install": "npm install antd-mobile",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/antd-mobile/latest",
+        "version": "5.43.0",
+        "license": "MIT",
+        "peer_dependencies": {
+          "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+        },
+        "deprecated": "",
+        "registry_description": "<div align=\"center\">"
+      }
+    },
+    {
+      "id": "fusion",
+      "name": "Fusion Design",
+      "kind": "web",
+      "package": "@alifd/next",
+      "manager": "npm",
+      "origin": "alibaba",
+      "owner": "阿里巴巴 Fusion",
+      "frameworks": [
+        "React"
+      ],
+      "category": "企业后台",
+      "homepage": "https://fusion.design/",
+      "repository": "https://github.com/alibaba-fusion/next",
+      "description": "强调主题定制与设计开发协作的 React 组件库。",
+      "best_for": "阿里系技术栈、需要品牌主题配置的后台。",
+      "caution": "核查 React 版本和主题构建方式；先做关键页面验证。",
+      "featured": false,
+      "tags": [
+        "企业后台",
+        "阿里巴巴 Fusion",
+        "React"
+      ],
+      "install": "npm install @alifd/next",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/%40alifd%2Fnext/latest",
+        "version": "1.27.34",
+        "license": "MIT",
+        "peer_dependencies": {
+          "react": ">=16.0.0",
+          "moment": "^2.22.1",
+          "react-dom": ">=16.0.0",
+          "@alifd/meet-react": "^2.0.0"
+        },
+        "deprecated": "",
+        "registry_description": "A configurable component library for web built on React."
+      }
+    },
+    {
+      "id": "td-react",
+      "name": "TDesign React",
+      "kind": "web",
+      "package": "tdesign-react",
+      "manager": "npm",
+      "origin": "tencent",
+      "owner": "腾讯 TDesign",
+      "frameworks": [
+        "React"
+      ],
+      "category": "企业后台",
+      "homepage": "https://tdesign.tencent.com/react/overview",
+      "repository": "https://github.com/Tencent/tdesign-react",
+      "description": "腾讯 TDesign 的桌面 React 实现。",
+      "best_for": "企业应用、腾讯设计体系和统一品牌后台。",
+      "caution": "桌面与移动端是不同包，按设备和框架选择。",
+      "featured": true,
+      "tags": [
+        "企业后台",
+        "腾讯 TDesign",
+        "React"
+      ],
+      "install": "npm install tdesign-react",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/tdesign-react/latest",
+        "version": "1.18.6",
+        "license": "MIT",
+        "peer_dependencies": {
+          "react": ">=16.13.1",
+          "react-dom": ">=16.13.1"
+        },
+        "deprecated": "",
+        "registry_description": "TDesign Component for React"
+      }
+    },
+    {
+      "id": "td-vue",
+      "name": "TDesign Vue Next",
+      "kind": "web",
+      "package": "tdesign-vue-next",
+      "manager": "npm",
+      "origin": "tencent",
+      "owner": "腾讯 TDesign",
+      "frameworks": [
+        "Vue"
+      ],
+      "category": "企业后台",
+      "homepage": "https://tdesign.tencent.com/vue-next/overview",
+      "repository": "https://github.com/Tencent/tdesign-vue-next",
+      "description": "TDesign 的 Vue 3 桌面组件库。",
+      "best_for": "Vue 3 企业后台与设计体系落地。",
+      "caution": "Vue 2 的 tdesign-vue 与 Vue 3 的 tdesign-vue-next 不可混用。",
+      "featured": false,
+      "tags": [
+        "企业后台",
+        "腾讯 TDesign",
+        "Vue"
+      ],
+      "install": "npm install tdesign-vue-next",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/tdesign-vue-next/latest",
+        "version": "1.20.10",
+        "license": "MIT",
+        "peer_dependencies": {
+          "vue": ">=3.1.0"
+        },
+        "deprecated": "",
+        "registry_description": "TDesign Component for vue-next"
+      }
+    },
+    {
+      "id": "td-mobile",
+      "name": "TDesign Mobile React",
+      "kind": "web",
+      "package": "tdesign-mobile-react",
+      "manager": "npm",
+      "origin": "tencent",
+      "owner": "腾讯 TDesign",
+      "frameworks": [
+        "React"
+      ],
+      "category": "移动端",
+      "homepage": "https://tdesign.tencent.com/mobile-react/overview",
+      "repository": "https://github.com/Tencent/tdesign-mobile-react",
+      "description": "TDesign 设计语言的 React 移动 Web 实现。",
+      "best_for": "移动端 H5 与腾讯设计体系。",
+      "caution": "移动 Web 实现，不能直接用于 Flutter。",
+      "featured": false,
+      "tags": [
+        "移动端",
+        "腾讯 TDesign",
+        "React"
+      ],
+      "install": "npm install tdesign-mobile-react",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/tdesign-mobile-react/latest",
+        "version": "1.0.0",
+        "license": "MIT",
+        "peer_dependencies": {
+          "react": ">=18.0.0",
+          "react-dom": ">=18.0.0"
+        },
+        "deprecated": "",
+        "registry_description": "TDesign Component for Mobile React"
+      }
+    },
+    {
+      "id": "arco-react",
+      "name": "Arco Design React",
+      "kind": "web",
+      "package": "@arco-design/web-react",
+      "manager": "npm",
+      "origin": "bytedance",
+      "owner": "字节跳动 Arco Design",
+      "frameworks": [
+        "React"
+      ],
+      "category": "企业后台",
+      "homepage": "https://arco.design/react/docs/start",
+      "repository": "https://github.com/arco-design/arco-design",
+      "description": "支持主题与设计 Token 的 React 企业组件库。",
+      "best_for": "React 管理后台、统一设计语言与主题配置。",
+      "caution": "React 与 Vue 是独立实现，API 和生态插件需分别确认。",
+      "featured": true,
+      "tags": [
+        "企业后台",
+        "字节跳动 Arco Design",
+        "React"
+      ],
+      "install": "npm install @arco-design/web-react",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/%40arco-design%2Fweb-react/latest",
+        "version": "2.66.18",
+        "license": "MIT",
+        "peer_dependencies": {
+          "react": ">=16",
+          "react-dom": ">=16"
+        },
+        "deprecated": "",
+        "registry_description": "Arco Design React UI Library."
+      }
+    },
+    {
+      "id": "arco-vue",
+      "name": "Arco Design Vue",
+      "kind": "web",
+      "package": "@arco-design/web-vue",
+      "manager": "npm",
+      "origin": "bytedance",
+      "owner": "字节跳动 Arco Design",
+      "frameworks": [
+        "Vue"
+      ],
+      "category": "企业后台",
+      "homepage": "https://arco.design/vue/docs/start",
+      "repository": "https://github.com/arco-design/arco-design-vue",
+      "description": "Arco Design 的 Vue 3 企业组件实现。",
+      "best_for": "Vue 3 中后台与品牌主题。",
+      "caution": "不要套用 React 版本的导入路径与 API。",
+      "featured": false,
+      "tags": [
+        "企业后台",
+        "字节跳动 Arco Design",
+        "Vue"
+      ],
+      "install": "npm install @arco-design/web-vue",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/%40arco-design%2Fweb-vue/latest",
+        "version": "2.59.0",
+        "license": "MIT",
+        "peer_dependencies": {
+          "vue": ">=3.1.0"
+        },
+        "deprecated": "",
+        "registry_description": "Arco Design Vue 2.0: A Vue.js 3 UI Library"
+      }
+    },
+    {
+      "id": "semi",
+      "name": "Semi Design",
+      "kind": "web",
+      "package": "@douyinfe/semi-ui",
+      "manager": "npm",
+      "origin": "bytedance",
+      "owner": "抖音前端 DouyinFE",
+      "frameworks": [
+        "React"
+      ],
+      "category": "企业后台",
+      "homepage": "https://semi.design/",
+      "repository": "https://github.com/DouyinFE/semi-design",
+      "description": "React 设计系统，提供组件、设计 Token 与主题能力。",
+      "best_for": "需要设计协作、主题定制的企业产品。",
+      "caution": "基于 React；设计工具能力与运行时组件的使用方式不同。",
+      "featured": true,
+      "tags": [
+        "企业后台",
+        "抖音前端 DouyinFE",
+        "React"
+      ],
+      "install": "npm install @douyinfe/semi-ui",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/%40douyinfe%2Fsemi-ui/latest",
+        "version": "2.104.0",
+        "license": "MIT",
+        "peer_dependencies": {
+          "react": ">=16.0.0",
+          "react-dom": ">=16.0.0"
+        },
+        "deprecated": "",
+        "registry_description": "A modern, comprehensive, flexible design system and UI library. Connect DesignOps & DevOps. Quickly build beautiful React apps. Maintained by Douyin-fe team."
+      }
+    },
+    {
+      "id": "element-plus",
+      "name": "Element Plus",
+      "kind": "web",
+      "package": "element-plus",
+      "manager": "npm",
+      "origin": "community",
+      "owner": "Element Plus 社区",
+      "frameworks": [
+        "Vue"
+      ],
+      "category": "企业后台",
+      "homepage": "https://element-plus.org/",
+      "repository": "https://github.com/element-plus/element-plus",
+      "description": "面向 Vue 3 的桌面业务组件库。",
+      "best_for": "Vue 3 管理台、表单与数据表格。",
+      "caution": "与 Vue 2 的 Element UI 区分；大表格需单独评估虚拟化。",
+      "featured": true,
+      "tags": [
+        "企业后台",
+        "Element Plus 社区",
+        "Vue"
+      ],
+      "install": "npm install element-plus",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/element-plus/latest",
+        "version": "2.14.7",
+        "license": "MIT",
+        "peer_dependencies": {
+          "vue": "^3.3.7"
+        },
+        "deprecated": "",
+        "registry_description": "A Component Library for Vue 3"
+      }
+    },
+    {
+      "id": "naive",
+      "name": "Naive UI",
+      "kind": "web",
+      "package": "naive-ui",
+      "manager": "npm",
+      "origin": "community",
+      "owner": "TuSimple 发起 / 社区",
+      "frameworks": [
+        "Vue"
+      ],
+      "category": "通用组件",
+      "homepage": "https://www.naiveui.com/",
+      "repository": "https://github.com/tusen-ai/naive-ui",
+      "description": "使用 TypeScript 的 Vue 3 组件库，支持主题定制。",
+      "best_for": "Vue 3 产品、偏好类型提示与可定制主题。",
+      "caution": "确认主题覆盖方式及 SSR 样式接入。",
+      "featured": false,
+      "tags": [
+        "通用组件",
+        "TuSimple 发起 / 社区",
+        "Vue"
+      ],
+      "install": "npm install naive-ui",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/naive-ui/latest",
+        "version": "2.45.3",
+        "license": "MIT",
+        "peer_dependencies": {
+          "vue": "^3.0.0"
+        },
+        "deprecated": "",
+        "registry_description": "A Vue 3 Component Library. Fairly Complete, Theme Customizable, Uses TypeScript, Fast"
+      }
+    },
+    {
+      "id": "vant",
+      "name": "Vant",
+      "kind": "web",
+      "package": "vant",
+      "manager": "npm",
+      "origin": "community",
+      "owner": "有赞 / Vant 社区",
+      "frameworks": [
+        "Vue"
+      ],
+      "category": "移动端",
+      "homepage": "https://vant-ui.github.io/vant/",
+      "repository": "https://github.com/youzan/vant",
+      "description": "轻量的 Vue 移动端组件库。",
+      "best_for": "移动商城、H5 业务与触屏交互。",
+      "caution": "版本与 Vue 主版本需对应；小程序是独立产品线。",
+      "featured": false,
+      "tags": [
+        "移动端",
+        "有赞 / Vant 社区",
+        "Vue"
+      ],
+      "install": "npm install vant",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/vant/latest",
+        "version": "4.10.2",
+        "license": "MIT",
+        "peer_dependencies": {
+          "vue": "^3.0.0"
+        },
+        "deprecated": "",
+        "registry_description": "Mobile UI Components built on Vue"
+      }
+    },
+    {
+      "id": "nutui",
+      "name": "NutUI",
+      "kind": "web",
+      "package": "@nutui/nutui",
+      "manager": "npm",
+      "origin": "jd",
+      "owner": "京东 NutUI",
+      "frameworks": [
+        "Vue"
+      ],
+      "category": "移动端",
+      "homepage": "https://nutui.jd.com/",
+      "repository": "https://github.com/jdf2e/nutui",
+      "description": "京东风格的 Vue 移动端组件。",
+      "best_for": "电商 H5 与移动业务界面。",
+      "caution": "Vue、React、Taro 方案的包名不同，当前收录 Vue 包。",
+      "featured": false,
+      "tags": [
+        "移动端",
+        "京东 NutUI",
+        "Vue"
+      ],
+      "install": "npm install @nutui/nutui",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/%40nutui%2Fnutui/latest",
+        "version": "4.3.15-beta.1",
+        "license": "MIT",
+        "peer_dependencies": {},
+        "deprecated": "",
+        "registry_description": "京东风格的轻量级移动端 Vue2、Vue3 组件库（支持小程序开发）"
+      }
+    },
+    {
+      "id": "mui",
+      "name": "MUI Material UI",
+      "kind": "web",
+      "package": "@mui/material",
+      "manager": "npm",
+      "origin": "international",
+      "owner": "MUI",
+      "frameworks": [
+        "React"
+      ],
+      "category": "通用组件",
+      "homepage": "https://mui.com/material-ui/",
+      "repository": "https://github.com/mui/material-ui",
+      "description": "Material Design 风格的 React 组件体系。",
+      "best_for": "国际化产品、Material 风格与 React 应用。",
+      "caution": "基础组件开源；MUI X 的部分高级能力需商业许可。",
+      "featured": true,
+      "tags": [
+        "通用组件",
+        "MUI",
+        "React"
+      ],
+      "install": "npm install @mui/material",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/%40mui%2Fmaterial/latest",
+        "version": "9.5.0",
+        "license": "MIT",
+        "peer_dependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@emotion/react": "^11.5.0",
+          "@emotion/styled": "^11.3.0",
+          "@mui/material-pigment-css": "^9.5.0"
+        },
+        "deprecated": "",
+        "registry_description": "Material UI is an open-source React component library that implements Google's Material Design. It's comprehensive and can be used in production out of the box."
+      }
+    },
+    {
+      "id": "chakra",
+      "name": "Chakra UI",
+      "kind": "web",
+      "package": "@chakra-ui/react",
+      "manager": "npm",
+      "origin": "international",
+      "owner": "Chakra UI 社区",
+      "frameworks": [
+        "React"
+      ],
+      "category": "通用组件",
+      "homepage": "https://chakra-ui.com/",
+      "repository": "https://github.com/chakra-ui/chakra-ui",
+      "description": "以可组合组件、样式属性和无障碍为重点的 React UI。",
+      "best_for": "快速构建自有视觉风格的产品界面。",
+      "caution": "v2/v3 组件 API 有差异，教程与安装版本应一致。",
+      "featured": false,
+      "tags": [
+        "通用组件",
+        "Chakra UI 社区",
+        "React"
+      ],
+      "install": "npm install @chakra-ui/react",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/%40chakra-ui%2Freact/latest",
+        "version": "3.37.0",
+        "license": "MIT",
+        "peer_dependencies": {
+          "react": ">=18",
+          "react-dom": ">=18",
+          "@emotion/react": ">=11"
+        },
+        "deprecated": "",
+        "registry_description": "Responsive and accessible React UI components built with React and Emotion"
+      }
+    },
+    {
+      "id": "mantine",
+      "name": "Mantine",
+      "kind": "web",
+      "package": "@mantine/core",
+      "manager": "npm",
+      "origin": "international",
+      "owner": "Mantine 社区",
+      "frameworks": [
+        "React"
+      ],
+      "category": "通用组件",
+      "homepage": "https://mantine.dev/",
+      "repository": "https://github.com/mantinedev/mantine",
+      "description": "覆盖表单、日期与 Hooks 的 React 组件生态。",
+      "best_for": "SaaS、仪表盘和需要配套 Hooks 的应用。",
+      "caution": "核心与日期、图表等扩展包分开安装。",
+      "featured": false,
+      "tags": [
+        "通用组件",
+        "Mantine 社区",
+        "React"
+      ],
+      "install": "npm install @mantine/core",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/%40mantine%2Fcore/latest",
+        "version": "9.7.4",
+        "license": "MIT",
+        "peer_dependencies": {
+          "react": "^19.2.0",
+          "react-dom": "^19.2.0",
+          "@mantine/hooks": "9.7.4"
+        },
+        "deprecated": "",
+        "registry_description": "React components library focused on usability, accessibility and developer experience"
+      }
+    },
+    {
+      "id": "radix",
+      "name": "Radix Primitives",
+      "kind": "web",
+      "package": "radix-ui",
+      "manager": "npm",
+      "origin": "international",
+      "owner": "Radix / WorkOS",
+      "frameworks": [
+        "React"
+      ],
+      "category": "无样式组件",
+      "homepage": "https://www.radix-ui.com/primitives",
+      "repository": "https://github.com/radix-ui/primitives",
+      "description": "提供弹层、菜单、对话框等交互原语。",
+      "best_for": "有自有设计系统、需要掌握样式的 React 团队。",
+      "caution": "Primitives 通常不含成品视觉；仍需验证组合后的键盘与焦点体验。",
+      "featured": false,
+      "tags": [
+        "无样式组件",
+        "Radix / WorkOS",
+        "React"
+      ],
+      "install": "npm install radix-ui",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/radix-ui/latest",
+        "version": "1.8.1",
+        "license": "MIT",
+        "peer_dependencies": {
+          "react": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+          "react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+          "@types/react": "*",
+          "@types/react-dom": "*"
+        },
+        "deprecated": "",
+        "registry_description": ""
+      }
+    },
+    {
+      "id": "shadcn",
+      "name": "shadcn/ui",
+      "kind": "web",
+      "package": "shadcn",
+      "manager": "npm",
+      "origin": "international",
+      "owner": "shadcn / 社区",
+      "frameworks": [
+        "React"
+      ],
+      "category": "源码组件",
+      "homepage": "https://ui.shadcn.com/",
+      "repository": "https://github.com/shadcn-ui/ui",
+      "description": "通过 CLI 将可修改的组件源码加入项目。",
+      "best_for": "希望持有组件源码、深度定制产品视觉。",
+      "caution": "npm 的 shadcn 是 CLI，不是运行时 UI 包；组件升级由项目维护。",
+      "featured": true,
+      "tags": [
+        "源码组件",
+        "shadcn / 社区",
+        "React"
+      ],
+      "install": "npx shadcn@latest init",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/shadcn/latest",
+        "version": "4.23.0",
+        "license": "MIT",
+        "peer_dependencies": {},
+        "deprecated": "",
+        "registry_description": "Add components to your apps."
+      }
+    },
+    {
+      "id": "fluent-react",
+      "name": "Fluent UI React",
+      "kind": "web",
+      "package": "@fluentui/react-components",
+      "manager": "npm",
+      "origin": "international",
+      "owner": "Microsoft",
+      "frameworks": [
+        "React"
+      ],
+      "category": "通用组件",
+      "homepage": "https://react.fluentui.dev/",
+      "repository": "https://github.com/microsoft/fluentui",
+      "description": "微软 Fluent 设计体系的 React 组件。",
+      "best_for": "Microsoft 生态、企业工具与桌面感 Web 产品。",
+      "caution": "不同 Fluent 主版本包与 API 不同，当前指向 v9 组件包。",
+      "featured": false,
+      "tags": [
+        "通用组件",
+        "Microsoft",
+        "React"
+      ],
+      "install": "npm install @fluentui/react-components",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/%40fluentui%2Freact-components/latest",
+        "version": "9.75.0",
+        "license": "MIT",
+        "peer_dependencies": {
+          "react": ">=16.14.0 <20.0.0",
+          "@types/react": ">=16.14.0 <20.0.0"
+        },
+        "deprecated": "",
+        "registry_description": "Suite package for converged React components"
+      }
+    },
+    {
+      "id": "carbon",
+      "name": "Carbon Design System",
+      "kind": "web",
+      "package": "@carbon/react",
+      "manager": "npm",
+      "origin": "international",
+      "owner": "IBM",
+      "frameworks": [
+        "React"
+      ],
+      "category": "企业后台",
+      "homepage": "https://carbondesignsystem.com/",
+      "repository": "https://github.com/carbon-design-system/carbon",
+      "description": "IBM 的企业设计系统与 React 实现。",
+      "best_for": "复杂企业应用、数据产品和统一交互规范。",
+      "caution": "设计资产、图标与组件可能适用不同条款，按使用资源核对。",
+      "featured": false,
+      "tags": [
+        "企业后台",
+        "IBM",
+        "React"
+      ],
+      "install": "npm install @carbon/react",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/%40carbon%2Freact/latest",
+        "version": "1.119.0",
+        "license": "Apache-2.0",
+        "peer_dependencies": {
+          "sass": "^1.33.0",
+          "react": "^16.8.6 || ^17.0.1 || ^18.2.0 || ^19.0.0",
+          "react-is": "^16.13.1 || ^17.0.2 || ^18.3.1 || ^19.0.0",
+          "react-dom": "^16.8.6 || ^17.0.1 || ^18.2.0 || ^19.0.0"
+        },
+        "deprecated": "",
+        "registry_description": "React components for the Carbon Design System"
+      }
+    },
+    {
+      "id": "primer",
+      "name": "Primer React",
+      "kind": "web",
+      "package": "@primer/react",
+      "manager": "npm",
+      "origin": "international",
+      "owner": "GitHub",
+      "frameworks": [
+        "React"
+      ],
+      "category": "通用组件",
+      "homepage": "https://primer.style/product/components/",
+      "repository": "https://github.com/primer/react",
+      "description": "GitHub Primer 设计系统的 React 组件。",
+      "best_for": "开发者工具、GitHub 风格的产品界面。",
+      "caution": "产品需要自有品牌规范时，需评估主题和样式适配。",
+      "featured": false,
+      "tags": [
+        "通用组件",
+        "GitHub",
+        "React"
+      ],
+      "install": "npm install @primer/react",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/%40primer%2Freact/latest",
+        "version": "38.43.0",
+        "license": "MIT",
+        "peer_dependencies": {
+          "react": "18.x || 19.x",
+          "react-is": "18.x || 19.x",
+          "react-dom": "18.x || 19.x",
+          "@types/react": "18.x || 19.x",
+          "@types/react-is": "18.x || 19.x",
+          "@types/react-dom": "18.x || 19.x"
+        },
+        "deprecated": "",
+        "registry_description": "An implementation of GitHub's Primer Design System using React"
+      }
+    },
+    {
+      "id": "vuetify",
+      "name": "Vuetify",
+      "kind": "web",
+      "package": "vuetify",
+      "manager": "npm",
+      "origin": "international",
+      "owner": "Vuetify",
+      "frameworks": [
+        "Vue"
+      ],
+      "category": "通用组件",
+      "homepage": "https://vuetifyjs.com/",
+      "repository": "https://github.com/vuetifyjs/vuetify",
+      "description": "Vue 的 Material Design 组件体系。",
+      "best_for": "Material 风格的 Vue 应用和跨设备 Web。",
+      "caution": "主版本与 Vue 版本需对应；部分模板与服务单独收费。",
+      "featured": false,
+      "tags": [
+        "通用组件",
+        "Vuetify",
+        "Vue"
+      ],
+      "install": "npm install vuetify",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/vuetify/latest",
+        "version": "4.3.1",
+        "license": "MIT",
+        "peer_dependencies": {
+          "vue": "^3.5.0 || ^3.6.0-0",
+          "typescript": ">=4.7",
+          "vite-plugin-vuetify": ">=2.1.0",
+          "webpack-plugin-vuetify": ">=3.1.0"
+        },
+        "deprecated": "",
+        "registry_description": "Vue Material Component Framework"
+      }
+    },
+    {
+      "id": "reka",
+      "name": "Reka UI",
+      "kind": "web",
+      "package": "reka-ui",
+      "manager": "npm",
+      "origin": "international",
+      "owner": "Reka UI 社区",
+      "frameworks": [
+        "Vue"
+      ],
+      "category": "无样式组件",
+      "homepage": "https://reka-ui.com/",
+      "repository": "https://github.com/unovue/reka-ui",
+      "description": "Vue 的可访问、无样式交互原语。",
+      "best_for": "自定义设计系统、Vue 生态源码组件。",
+      "caution": "原 Radix Vue 演进而来，旧教程需核对包名和迁移说明。",
+      "featured": false,
+      "tags": [
+        "无样式组件",
+        "Reka UI 社区",
+        "Vue"
+      ],
+      "install": "npm install reka-ui",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/reka-ui/latest",
+        "version": "2.11.0",
+        "license": "MIT",
+        "peer_dependencies": {
+          "vue": ">= 3.4.0"
+        },
+        "deprecated": "",
+        "registry_description": "Vue port for Radix UI Primitives."
+      }
+    },
+    {
+      "id": "daisy",
+      "name": "daisyUI",
+      "kind": "web",
+      "package": "daisyui",
+      "manager": "npm",
+      "origin": "international",
+      "owner": "daisyUI 社区",
+      "frameworks": [
+        "CSS"
+      ],
+      "category": "CSS 组件",
+      "homepage": "https://daisyui.com/",
+      "repository": "https://github.com/saadeghi/daisyui",
+      "description": "为 Tailwind CSS 提供语义化组件类和主题。",
+      "best_for": "快速搭建页面、偏好 CSS 类的团队。",
+      "caution": "确认 Tailwind 与 daisyUI 主版本；交互行为需要自行接入。",
+      "featured": false,
+      "tags": [
+        "CSS 组件",
+        "daisyUI 社区",
+        "CSS"
+      ],
+      "install": "npm install daisyui",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/daisyui/latest",
+        "version": "5.7.50",
+        "license": "MIT",
+        "peer_dependencies": {},
+        "deprecated": "",
+        "registry_description": "daisyUI 5 - The Tailwind CSS Component Library"
+      }
+    },
+    {
+      "id": "bootstrap",
+      "name": "Bootstrap",
+      "kind": "web",
+      "package": "bootstrap",
+      "manager": "npm",
+      "origin": "international",
+      "owner": "Bootstrap 社区",
+      "frameworks": [
+        "CSS",
+        "JavaScript"
+      ],
+      "category": "CSS 组件",
+      "homepage": "https://getbootstrap.com/",
+      "repository": "https://github.com/twbs/bootstrap",
+      "description": "提供栅格、样式组件与 JavaScript 交互插件。",
+      "best_for": "传统 Web、服务端渲染页面与快速原型。",
+      "caution": "组件 JavaScript 与框架封装的状态管理不要混用。",
+      "featured": false,
+      "tags": [
+        "CSS 组件",
+        "Bootstrap 社区",
+        "CSS",
+        "JavaScript"
+      ],
+      "install": "npm install bootstrap",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://registry.npmjs.org/bootstrap/latest",
+        "version": "5.3.8",
+        "license": "MIT",
+        "peer_dependencies": {
+          "@popperjs/core": "^2.11.8"
+        },
+        "deprecated": "",
+        "registry_description": "The most popular front-end framework for developing responsive, mobile first projects on the web."
+      }
+    },
+    {
+      "id": "go-router",
+      "name": "go_router",
+      "kind": "package",
+      "package": "go_router",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Flutter 团队",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "路由导航",
+      "homepage": "https://pub.dev/packages/go_router",
+      "repository": "https://github.com/flutter/packages/tree/main/packages/go_router",
+      "description": "基于 Router API 的声明式路由，支持 URL 与深层链接。",
+      "best_for": "新项目、Web URL 同步、登录重定向与嵌套路由。",
+      "caution": "大版本升级核对重定向和 ShellRoute 行为。",
+      "featured": true,
+      "tags": [
+        "路由导航",
+        "go_router"
+      ],
+      "install": "flutter pub add go_router",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/go_router",
+        "score_source": "https://pub.dev/api/packages/go_router/score",
+        "version": "18.1.2",
+        "published": "2026-10-29T16:02:02.070838Z",
+        "license": "BSD-3-Clause",
+        "sdk": "^3.12.0",
+        "flutter_sdk": ">=3.44.0",
+        "platforms": [],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A declarative router for Flutter based on Navigation 2 supporting deep linking, data-driven routes and more"
+      },
+      "license_review": {
+        "label": "BSD-3-Clause",
+        "source": "https://pub.dev/packages/go_router/license",
+        "checked_on": "2026-11-01"
+      }
+    },
+    {
+      "id": "auto-route",
+      "name": "auto_route",
+      "kind": "package",
+      "package": "auto_route",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "路由导航",
+      "homepage": "https://pub.dev/packages/auto_route",
+      "repository": "https://github.com/Milad-Akarie/auto_route_library",
+      "description": "以代码生成为核心的类型安全路由方案。",
+      "best_for": "路由较多、需要参数类型检查的应用。",
+      "caution": "通常需配套 auto_route_generator 与 build_runner。",
+      "featured": false,
+      "tags": [
+        "路由导航",
+        "auto_route"
+      ],
+      "install": "flutter pub add auto_route",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/auto_route",
+        "score_source": "https://pub.dev/api/packages/auto_route/score",
+        "version": "11.2.0",
+        "published": "2026-09-21T14:36:04.672204Z",
+        "license": "MIT",
+        "sdk": ">=3.0.0 <4.0.0",
+        "flutter_sdk": ">=3.16.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "AutoRoute is a declarative routing solution, where everything needed for navigation is automatically generated for you."
+      }
+    },
+    {
+      "id": "fluro",
+      "name": "fluro",
+      "kind": "package",
+      "package": "fluro",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Luke Pighetti",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "路由导航",
+      "homepage": "https://pub.dev/packages/fluro",
+      "repository": "https://github.com/lukepighetti/fluro",
+      "description": "基于命名路径、参数与处理器的 Flutter 路由库。",
+      "best_for": "维护已有 Fluro 项目、学习路径匹配与转场。",
+      "caution": "发布较早；新项目先比较 go_router / auto_route，并用目标 Flutter SDK 实测。",
+      "featured": false,
+      "tags": [
+        "路由导航",
+        "fluro"
+      ],
+      "install": "flutter pub add fluro",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/fluro",
+        "score_source": "https://pub.dev/api/packages/fluro/score",
+        "version": "2.0.5",
+        "published": "2023-02-17T20:30:03.596312Z",
+        "license": "MIT",
+        "sdk": ">=2.12.0 <3.0.0",
+        "flutter_sdk": ">=1.17.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Fluro is a null-safe Flutter routing library that adds flexible routing options like wildcards, named parameters and clear route definitions."
+      }
+    },
+    {
+      "id": "flutter-riverpod",
+      "name": "flutter_riverpod",
+      "kind": "package",
+      "package": "flutter_riverpod",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Riverpod 社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "状态管理",
+      "homepage": "https://pub.dev/packages/flutter_riverpod",
+      "repository": "https://github.com/rrousselGit/riverpod",
+      "description": "以 Provider 和响应式依赖管理异步数据与状态。",
+      "best_for": "需要异步缓存、依赖组合与可测试状态的应用。",
+      "caution": "代码生成是可选路线；注意主版本 API 与生命周期差异。",
+      "featured": true,
+      "tags": [
+        "状态管理",
+        "flutter_riverpod"
+      ],
+      "install": "flutter pub add flutter_riverpod",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/flutter_riverpod",
+        "score_source": "https://pub.dev/api/packages/flutter_riverpod/score",
+        "version": "3.4.3",
+        "published": "2026-09-03T22:15:17.166817Z",
+        "license": "MIT",
+        "sdk": "^3.12.0",
+        "flutter_sdk": ">=3.0.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A reactive caching and data-binding framework. Riverpod makes working with asynchronous code a breeze.\n"
+      }
+    },
+    {
+      "id": "flutter-bloc",
+      "name": "flutter_bloc",
+      "kind": "package",
+      "package": "flutter_bloc",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Bloc 社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "状态管理",
+      "homepage": "https://pub.dev/packages/flutter_bloc",
+      "repository": "https://github.com/felangel/bloc/tree/master/packages/flutter_bloc",
+      "description": "使用 Bloc / Cubit 分离业务状态与视图。",
+      "best_for": "多人协作、事件流清晰、强调可测试业务逻辑的项目。",
+      "caution": "Bloc 与 Cubit 的复杂度不同，按业务选择。",
+      "featured": true,
+      "tags": [
+        "状态管理",
+        "flutter_bloc"
+      ],
+      "install": "flutter pub add flutter_bloc",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/flutter_bloc",
+        "score_source": "https://pub.dev/api/packages/flutter_bloc/score",
+        "version": "9.1.1",
+        "published": "2025-05-02T04:01:45.969428Z",
+        "license": "MIT",
+        "sdk": ">=2.14.0 <4.0.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter widgets that make it easy to implement the BLoC (Business Logic Component) design pattern. Built to be used with the bloc state management package."
+      }
+    },
+    {
+      "id": "provider",
+      "name": "provider",
+      "kind": "package",
+      "package": "provider",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "状态管理",
+      "homepage": "https://pub.dev/packages/provider",
+      "repository": "https://github.com/rrousselGit/provider",
+      "description": "对 InheritedWidget 的轻量封装，用于状态共享与依赖提供。",
+      "best_for": "较简单的状态共享、已有 ChangeNotifier 项目。",
+      "caution": "避免全局大状态与过宽监听造成额外重建。",
+      "featured": false,
+      "tags": [
+        "状态管理",
+        "provider"
+      ],
+      "install": "flutter pub add provider",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/provider",
+        "score_source": "https://pub.dev/api/packages/provider/score",
+        "version": "6.1.5+1",
+        "published": "2025-08-19T12:50:56.438080Z",
+        "license": "MIT",
+        "sdk": ">=2.12.0 <4.0.0",
+        "flutter_sdk": ">=1.16.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A wrapper around InheritedWidget to make them easier to use and more reusable."
+      }
+    },
+    {
+      "id": "get-it",
+      "name": "get_it",
+      "kind": "package",
+      "package": "get_it",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "依赖注入",
+      "homepage": "https://pub.dev/packages/get_it",
+      "repository": "https://github.com/flutter-it/get_it",
+      "description": "Dart 服务定位器，用于注册与查找依赖。",
+      "best_for": "服务解耦、测试替换与业务对象装配。",
+      "caution": "不是响应式状态管理；注意作用域和资源释放。",
+      "featured": false,
+      "tags": [
+        "依赖注入",
+        "get_it"
+      ],
+      "install": "flutter pub add get_it",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/get_it",
+        "score_source": "https://pub.dev/api/packages/get_it/score",
+        "version": "9.3.0",
+        "published": "2026-09-19T21:13:59.878228Z",
+        "license": "MIT",
+        "sdk": ">=3.0.0 <4.0.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Simple direct Service Locator that allows to decouple the interface from a concrete implementation and  to access the concrete implementation from everywhere in your App\""
+      }
+    },
+    {
+      "id": "dio",
+      "name": "dio",
+      "kind": "package",
+      "package": "dio",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Dart / Flutter 社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "网络请求",
+      "homepage": "https://pub.dev/packages/dio",
+      "repository": "https://github.com/cfug/dio/blob/main/dio",
+      "description": "支持拦截器、取消、上传下载等能力的 HTTP 客户端。",
+      "best_for": "统一鉴权、错误处理与文件传输。",
+      "caution": "重试写请求需考虑幂等；不要在日志中记录令牌。",
+      "featured": true,
+      "tags": [
+        "网络请求",
+        "dio"
+      ],
+      "install": "flutter pub add dio",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/dio",
+        "score_source": "https://pub.dev/api/packages/dio/score",
+        "version": "5.11.1",
+        "published": "2026-09-04T02:46:21.721502Z",
+        "license": "MIT",
+        "sdk": ">=2.18.0 <4.0.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A powerful HTTP networking package,\nsupports Interceptors,\nAborting and canceling a request,\nCustom adapters, Transformers, etc.\n"
+      }
+    },
+    {
+      "id": "http",
+      "name": "http",
+      "kind": "package",
+      "package": "http",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Dart 团队",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "网络请求",
+      "homepage": "https://pub.dev/packages/http",
+      "repository": "https://github.com/dart-lang/http/tree/master/pkgs/http",
+      "description": "Dart 官方生态的可组合 HTTP 客户端。",
+      "best_for": "轻量 REST、可替换客户端与 Dart 共享代码。",
+      "caution": "复杂拦截器、重试和上传进度需自行组合。",
+      "featured": false,
+      "tags": [
+        "网络请求",
+        "http"
+      ],
+      "install": "flutter pub add http",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/http",
+        "score_source": "https://pub.dev/api/packages/http/score",
+        "version": "1.6.0",
+        "published": "2025-11-10T18:27:56.434747Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": "^3.4.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A composable, multi-platform, Future-based API for HTTP requests."
+      }
+    },
+    {
+      "id": "retrofit",
+      "name": "retrofit",
+      "kind": "package",
+      "package": "retrofit",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "网络请求",
+      "homepage": "https://pub.dev/packages/retrofit",
+      "repository": "https://github.com/trevorwang/retrofit.dart/",
+      "description": "为 Dio 提供基于注解的 HTTP API 代码生成。",
+      "best_for": "API 较多、希望用声明描述请求的项目。",
+      "caution": "需要 retrofit_generator；与 Dio 版本保持兼容。",
+      "featured": false,
+      "tags": [
+        "网络请求",
+        "retrofit"
+      ],
+      "install": "flutter pub add retrofit",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/retrofit",
+        "score_source": "https://pub.dev/api/packages/retrofit/score",
+        "version": "4.10.0",
+        "published": "2026-08-13T10:31:31.741421Z",
+        "license": "MIT",
+        "sdk": ">=3.8.0 <4.0.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "retrofit.dart is an dio client generator using source_gen and inspired by Chopper and Retrofit."
+      }
+    },
+    {
+      "id": "web-socket-channel",
+      "name": "web_socket_channel",
+      "kind": "package",
+      "package": "web_socket_channel",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Dart 团队",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "网络请求",
+      "homepage": "https://pub.dev/packages/web_socket_channel",
+      "repository": "https://github.com/dart-lang/http/tree/master/pkgs/web_socket_channel",
+      "description": "提供跨平台 WebSocket 通道抽象。",
+      "best_for": "聊天、实时通知与状态推送。",
+      "caution": "心跳、重连、背压和消息确认需要业务实现。",
+      "featured": false,
+      "tags": [
+        "网络请求",
+        "web_socket_channel"
+      ],
+      "install": "flutter pub add web_socket_channel",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/web_socket_channel",
+        "score_source": "https://pub.dev/api/packages/web_socket_channel/score",
+        "version": "3.0.3",
+        "published": "2025-04-17T20:42:13.656396Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": "^3.3.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "StreamChannel wrappers for WebSockets. Provides a cross-platform WebSocketChannel API, a cross-platform implementation of that API that communicates over an underlying StreamChannel."
+      }
+    },
+    {
+      "id": "connectivity-plus",
+      "name": "connectivity_plus",
+      "kind": "package",
+      "package": "connectivity_plus",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "设备能力",
+      "homepage": "https://pub.dev/packages/connectivity_plus",
+      "repository": "https://github.com/fluttercommunity/plus_plugins/tree/main/packages/connectivity_plus/connectivity_plus",
+      "description": "检测设备网络连接类型及其变化。",
+      "best_for": "网络提示、离线体验与重连触发。",
+      "caution": "有 Wi-Fi / 蜂窝连接不代表互联网可达。",
+      "featured": false,
+      "tags": [
+        "设备能力",
+        "connectivity_plus"
+      ],
+      "install": "flutter pub add connectivity_plus",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/connectivity_plus",
+        "score_source": "https://pub.dev/api/packages/connectivity_plus/score",
+        "version": "7.3.2",
+        "published": "2026-10-01T19:32:11.339157Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": ">=3.2.0 <4.0.0",
+        "flutter_sdk": ">=3.7.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter plugin for discovering the state of the network (WiFi & mobile/cellular) connectivity on Android and iOS."
+      }
+    },
+    {
+      "id": "freezed",
+      "name": "freezed",
+      "kind": "package",
+      "package": "freezed",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "模型序列化",
+      "homepage": "https://pub.dev/packages/freezed",
+      "repository": "https://github.com/rrousselGit/freezed",
+      "description": "通过代码生成实现不可变模型、联合类型等。",
+      "best_for": "复杂业务状态和不可变数据模型。",
+      "caution": "这是开发依赖，配套 freezed_annotation 与 build_runner。",
+      "featured": false,
+      "tags": [
+        "模型序列化",
+        "freezed"
+      ],
+      "install": "flutter pub add --dev freezed",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/freezed",
+        "score_source": "https://pub.dev/api/packages/freezed/score",
+        "version": "4.0.3",
+        "published": "2026-10-17T17:34:42.812516Z",
+        "license": "MIT",
+        "sdk": ">=3.13.0 <4.0.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Code generation for immutable classes that has a simple syntax/API without compromising on the features.\n"
+      }
+    },
+    {
+      "id": "json-serializable",
+      "name": "json_serializable",
+      "kind": "package",
+      "package": "json_serializable",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "模型序列化",
+      "homepage": "https://pub.dev/packages/json_serializable",
+      "repository": "https://github.com/google/json_serializable.dart/tree/master/json_serializable",
+      "description": "按注解生成 JSON 编解码代码。",
+      "best_for": "REST 数据模型与序列化。",
+      "caution": "这是开发依赖，运行时通常使用 json_annotation。",
+      "featured": false,
+      "tags": [
+        "模型序列化",
+        "json_serializable"
+      ],
+      "install": "flutter pub add --dev json_serializable",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/json_serializable",
+        "score_source": "https://pub.dev/api/packages/json_serializable/score",
+        "version": "6.15.2",
+        "published": "2026-10-20T19:29:24.929546Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": "^3.12.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Automatically generate code for converting to and from JSON by annotating Dart classes."
+      }
+    },
+    {
+      "id": "build-runner",
+      "name": "build_runner",
+      "kind": "package",
+      "package": "build_runner",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "模型序列化",
+      "homepage": "https://pub.dev/packages/build_runner",
+      "repository": "https://github.com/dart-lang/build/tree/master/build_runner",
+      "description": "Dart 的代码生成任务执行器。",
+      "best_for": "运行模型、路由和数据库生成器。",
+      "caution": "作为开发依赖；生成器版本需要协调。",
+      "featured": false,
+      "tags": [
+        "模型序列化",
+        "build_runner"
+      ],
+      "install": "flutter pub add --dev build_runner",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/build_runner",
+        "score_source": "https://pub.dev/api/packages/build_runner/score",
+        "version": "2.17.1",
+        "published": "2026-10-14T13:08:54.691481Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": "^3.11.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "windows",
+          "linux",
+          "macos"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A build system for Dart code generation and modular compilation."
+      }
+    },
+    {
+      "id": "drift",
+      "name": "drift",
+      "kind": "package",
+      "package": "drift",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Drift 社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "本地存储",
+      "homepage": "https://pub.dev/packages/drift",
+      "repository": "https://github.com/simolus3/drift",
+      "description": "基于 SQLite 的类型安全持久化与响应式查询。",
+      "best_for": "关系数据、离线优先业务与复杂查询。",
+      "caution": "原生与 Web 数据库接入不同，迁移需独立验证。",
+      "featured": true,
+      "tags": [
+        "本地存储",
+        "drift"
+      ],
+      "install": "flutter pub add drift",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/drift",
+        "score_source": "https://pub.dev/api/packages/drift/score",
+        "version": "2.35.3",
+        "published": "2026-10-23T15:42:38.337543Z",
+        "license": "MIT",
+        "sdk": ">=3.10.0 <4.0.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Drift is a reactive library to store relational data in Dart and Flutter applications."
+      }
+    },
+    {
+      "id": "sqflite",
+      "name": "sqflite",
+      "kind": "package",
+      "package": "sqflite",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "本地存储",
+      "homepage": "https://pub.dev/packages/sqflite",
+      "repository": "https://github.com/tekartik/sqflite/tree/master/sqflite",
+      "description": "Flutter 的 SQLite 访问插件。",
+      "best_for": "移动端关系数据存储与现有 SQL 迁移。",
+      "caution": "桌面和 Web 支持需对应扩展，不能默认覆盖全平台。",
+      "featured": false,
+      "tags": [
+        "本地存储",
+        "sqflite"
+      ],
+      "install": "flutter pub add sqflite",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/sqflite",
+        "score_source": "https://pub.dev/api/packages/sqflite/score",
+        "version": "2.4.5",
+        "published": "2026-10-21T14:07:10.037023Z",
+        "license": "BSD-2-CLAUSE",
+        "sdk": "^3.12.0",
+        "flutter_sdk": ">=3.44.0",
+        "platforms": [
+          "android",
+          "ios",
+          "macos"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter plugin for SQLite, a self-contained, high-reliability, embedded, SQL database engine."
+      }
+    },
+    {
+      "id": "shared-preferences",
+      "name": "shared_preferences",
+      "kind": "package",
+      "package": "shared_preferences",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Flutter 团队",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "本地存储",
+      "homepage": "https://pub.dev/packages/shared_preferences",
+      "repository": "https://github.com/flutter/packages/tree/main/packages/shared_preferences/shared_preferences",
+      "description": "存储少量键值偏好与简单设置。",
+      "best_for": "主题、语言、用户界面偏好。",
+      "caution": "不用于密钥、关键事务数据或大型数据集。",
+      "featured": false,
+      "tags": [
+        "本地存储",
+        "shared_preferences"
+      ],
+      "install": "flutter pub add shared_preferences",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/shared_preferences",
+        "score_source": "https://pub.dev/api/packages/shared_preferences/score",
+        "version": "2.5.6",
+        "published": "2026-10-05T23:53:39.579508Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": "^3.11.0",
+        "flutter_sdk": ">=3.41.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter plugin for reading and writing simple key-value pairs. Wraps NSUserDefaults on iOS and SharedPreferences on Android."
+      }
+    },
+    {
+      "id": "flutter-secure-storage",
+      "name": "flutter_secure_storage",
+      "kind": "package",
+      "package": "flutter_secure_storage",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "本地存储",
+      "homepage": "https://pub.dev/packages/flutter_secure_storage",
+      "repository": "https://github.com/mogol/flutter_secure_storage/tree/develop/flutter_secure_storage",
+      "description": "使用各平台安全存储能力保存敏感键值。",
+      "best_for": "登录令牌等少量敏感数据。",
+      "caution": "各平台密钥链、备份与浏览器安全边界不同。",
+      "featured": false,
+      "tags": [
+        "本地存储",
+        "flutter_secure_storage"
+      ],
+      "install": "flutter pub add flutter_secure_storage",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/flutter_secure_storage",
+        "score_source": "https://pub.dev/api/packages/flutter_secure_storage/score",
+        "version": "11.2.0",
+        "published": "2026-09-16T11:48:19.409417Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": ">=3.8.0 <4.0.0",
+        "flutter_sdk": ">=3.19.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A Flutter plugin for securely storing sensitive data using encrypted storage."
+      }
+    },
+    {
+      "id": "path-provider",
+      "name": "path_provider",
+      "kind": "package",
+      "package": "path_provider",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Flutter 团队",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "文件系统",
+      "homepage": "https://pub.dev/packages/path_provider",
+      "repository": "https://github.com/flutter/packages/tree/main/packages/path_provider/path_provider",
+      "description": "查找应用文档、缓存等系统目录。",
+      "best_for": "文件保存路径、缓存与应用数据目录。",
+      "caution": "平台支持不同；Web 没有原生文件目录语义。",
+      "featured": false,
+      "tags": [
+        "文件系统",
+        "path_provider"
+      ],
+      "install": "flutter pub add path_provider",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/path_provider",
+        "score_source": "https://pub.dev/api/packages/path_provider/score",
+        "version": "2.1.6",
+        "published": "2026-06-15T13:51:07.158561Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": "^3.10.0",
+        "flutter_sdk": ">=3.38.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter plugin for getting commonly used locations on host platform file systems, such as the temp and app data directories."
+      }
+    },
+    {
+      "id": "file-picker",
+      "name": "file_picker",
+      "kind": "package",
+      "package": "file_picker",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "文件系统",
+      "homepage": "https://pub.dev/packages/file_picker",
+      "repository": "https://github.com/vicajilau/flutter_file_picker/tree/main/packages/file_picker",
+      "description": "调用平台文件选择器，选择文件或目录。",
+      "best_for": "附件上传、文件导入和桌面文件操作。",
+      "caution": "大文件避免全量读入内存；目录选择支持需看平台。",
+      "featured": false,
+      "tags": [
+        "文件系统",
+        "file_picker"
+      ],
+      "install": "flutter pub add file_picker",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/file_picker",
+        "score_source": "https://pub.dev/api/packages/file_picker/score",
+        "version": "13.3.0",
+        "published": "2026-10-26T05:29:41.313752Z",
+        "license": "MIT",
+        "sdk": ">=3.10.0 <4.0.0",
+        "flutter_sdk": ">=3.38.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A package that allows you to use a native file explorer to pick single or multiple absolute file paths, with extension filtering support."
+      }
+    },
+    {
+      "id": "image-picker",
+      "name": "image_picker",
+      "kind": "package",
+      "package": "image_picker",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Flutter 团队",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "图片媒体",
+      "homepage": "https://pub.dev/packages/image_picker",
+      "repository": "https://github.com/flutter/packages/tree/main/packages/image_picker/image_picker",
+      "description": "调用系统相机或相册获取图片与视频。",
+      "best_for": "头像、拍照与媒体上传。",
+      "caution": "配置相机 / 相册权限，并处理活动恢复与用户取消。",
+      "featured": false,
+      "tags": [
+        "图片媒体",
+        "image_picker"
+      ],
+      "install": "flutter pub add image_picker",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/image_picker",
+        "score_source": "https://pub.dev/api/packages/image_picker/score",
+        "version": "1.2.4",
+        "published": "2026-10-06T01:57:15.735158Z",
+        "license": "APACHE-2.0, BSD-3-CLAUSE",
+        "sdk": "^3.11.0",
+        "flutter_sdk": ">=3.41.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter plugin for selecting images from the Android and iOS image library, and taking new pictures with the camera."
+      }
+    },
+    {
+      "id": "cached-network-image",
+      "name": "cached_network_image",
+      "kind": "package",
+      "package": "cached_network_image",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "图片媒体",
+      "homepage": "https://pub.dev/packages/cached_network_image",
+      "repository": "https://github.com/Baseflow/flutter_cached_network_image",
+      "description": "展示网络图片并提供缓存、占位和错误视图。",
+      "best_for": "列表缩略图、头像与图片浏览。",
+      "caution": "Web 缓存语义不同；注意图片解码内存。",
+      "featured": true,
+      "tags": [
+        "图片媒体",
+        "cached_network_image"
+      ],
+      "install": "flutter pub add cached_network_image",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/cached_network_image",
+        "score_source": "https://pub.dev/api/packages/cached_network_image/score",
+        "version": "4.0.6",
+        "published": "2026-10-29T12:16:31.892001Z",
+        "license": "MIT",
+        "sdk": "^3.12.0",
+        "flutter_sdk": ">=3.44.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter library to load and cache network images. Can also be used with placeholder and error widgets."
+      }
+    },
+    {
+      "id": "flutter-svg",
+      "name": "flutter_svg",
+      "kind": "package",
+      "package": "flutter_svg",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "图片媒体",
+      "homepage": "https://pub.dev/packages/flutter_svg",
+      "repository": "https://github.com/flutter/packages/tree/main/third_party/packages/flutter_svg",
+      "description": "在 Flutter 中解析和绘制 SVG 图形。",
+      "best_for": "矢量图标、插画与品牌图形。",
+      "caution": "不支持全部浏览器 SVG 特性，复杂 SVG 需实测。",
+      "featured": false,
+      "tags": [
+        "图片媒体",
+        "flutter_svg"
+      ],
+      "install": "flutter pub add flutter_svg",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/flutter_svg",
+        "score_source": "https://pub.dev/api/packages/flutter_svg/score",
+        "version": "2.3.2",
+        "published": "2026-10-28T21:10:51.555314Z",
+        "license": "MIT",
+        "sdk": "^3.11.0",
+        "flutter_sdk": ">=3.41.0",
+        "platforms": [],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "An SVG rendering and widget library for Flutter, which allows painting and displaying Scalable Vector Graphics 1.1 files."
+      },
+      "license_review": {
+        "label": "MIT",
+        "source": "https://pub.dev/packages/flutter_svg/license",
+        "checked_on": "2026-11-01"
+      }
+    },
+    {
+      "id": "video-player",
+      "name": "video_player",
+      "kind": "package",
+      "package": "video_player",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Flutter 团队",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "图片媒体",
+      "homepage": "https://pub.dev/packages/video_player",
+      "repository": "https://github.com/flutter/packages/tree/main/packages/video_player/video_player",
+      "description": "调用平台视频播放能力。",
+      "best_for": "短视频、课程和基础视频播放。",
+      "caution": "控制条需自行实现；编解码和自动播放能力因平台而异。",
+      "featured": false,
+      "tags": [
+        "图片媒体",
+        "video_player"
+      ],
+      "install": "flutter pub add video_player",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/video_player",
+        "score_source": "https://pub.dev/api/packages/video_player/score",
+        "version": "2.14.1",
+        "published": "2026-10-02T21:58:29.522962Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": "^3.12.0",
+        "flutter_sdk": ">=3.44.0",
+        "platforms": [
+          "android",
+          "ios",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter plugin for displaying inline video with other Flutter widgets on Android, iOS, macOS and web."
+      }
+    },
+    {
+      "id": "just-audio",
+      "name": "just_audio",
+      "kind": "package",
+      "package": "just_audio",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "图片媒体",
+      "homepage": "https://pub.dev/packages/just_audio",
+      "repository": "https://github.com/ryanheise/just_audio/tree/minor/just_audio",
+      "description": "提供音频播放、播放列表和音频流支持。",
+      "best_for": "音乐、播客与语音播放。",
+      "caution": "后台播放和媒体通知需额外集成；桌面可能需要平台后端。",
+      "featured": false,
+      "tags": [
+        "图片媒体",
+        "just_audio"
+      ],
+      "install": "flutter pub add just_audio",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/just_audio",
+        "score_source": "https://pub.dev/api/packages/just_audio/score",
+        "version": "0.10.6",
+        "published": "2026-06-29T13:36:46.318814Z",
+        "license": "APACHE-2.0, MIT",
+        "sdk": "^3.6.0",
+        "flutter_sdk": ">=3.27.0",
+        "platforms": [
+          "android",
+          "ios",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A feature-rich audio player for Flutter. Loop, clip and sequence any sound from any source (asset/file/URL/stream) in gapless playlists."
+      }
+    },
+    {
+      "id": "lottie",
+      "name": "lottie",
+      "kind": "package",
+      "package": "lottie",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "动画图表",
+      "homepage": "https://pub.dev/packages/lottie",
+      "repository": "https://github.com/xvrh/lottie-flutter",
+      "description": "播放 Lottie JSON 矢量动画。",
+      "best_for": "引导页、加载与轻量动效。",
+      "caution": "复杂动画会影响性能；确认设计导出特性受支持。",
+      "featured": false,
+      "tags": [
+        "动画图表",
+        "lottie"
+      ],
+      "install": "flutter pub add lottie",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/lottie",
+        "score_source": "https://pub.dev/api/packages/lottie/score",
+        "version": "3.8.1",
+        "published": "2026-10-31T08:33:38.446562Z",
+        "license": "MIT",
+        "sdk": "^3.13.0",
+        "flutter_sdk": ">=3.47.0",
+        "platforms": [],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Render After Effects animations natively on Flutter. This package is a pure Dart implementation of a Lottie player."
+      },
+      "license_review": {
+        "label": "MIT",
+        "source": "https://pub.dev/packages/lottie/license",
+        "checked_on": "2026-11-01"
+      }
+    },
+    {
+      "id": "flutter-animate",
+      "name": "flutter_animate",
+      "kind": "package",
+      "package": "flutter_animate",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "动画图表",
+      "homepage": "https://pub.dev/packages/flutter_animate",
+      "repository": "https://github.com/gskinner/flutter_animate",
+      "description": "用可组合 API 添加补间与序列动画。",
+      "best_for": "入场、交错和界面微交互。",
+      "caution": "根据系统偏好减少动态效果，避免列表同时播放过多动画。",
+      "featured": false,
+      "tags": [
+        "动画图表",
+        "flutter_animate"
+      ],
+      "install": "flutter pub add flutter_animate",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/flutter_animate",
+        "score_source": "https://pub.dev/api/packages/flutter_animate/score",
+        "version": "4.5.2",
+        "published": "2024-11-25T19:37:57.335524Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": ">=2.17.0 <4.0.0",
+        "flutter_sdk": ">=2.0.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Add beautiful animated effects & builders in Flutter, via an easy, customizable, unified API."
+      }
+    },
+    {
+      "id": "fl-chart",
+      "name": "fl_chart",
+      "kind": "package",
+      "package": "fl_chart",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "动画图表",
+      "homepage": "https://pub.dev/packages/fl_chart",
+      "repository": "https://github.com/imaNNeo/fl_chart",
+      "description": "提供折线、柱状、饼图等 Flutter 图表。",
+      "best_for": "统计看板和数据展示。",
+      "caution": "大数据量需抽样，日期轴与无障碍描述需自行完善。",
+      "featured": true,
+      "tags": [
+        "动画图表",
+        "fl_chart"
+      ],
+      "install": "flutter pub add fl_chart",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/fl_chart",
+        "score_source": "https://pub.dev/api/packages/fl_chart/score",
+        "version": "1.3.0",
+        "published": "2026-10-21T15:12:20.745941Z",
+        "license": "MIT",
+        "sdk": ">=3.6.2 <4.0.0",
+        "flutter_sdk": ">=3.27.4",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A highly customizable Flutter chart library that supports Line Chart, Bar Chart, Pie Chart, Scatter Chart, and Radar Chart."
+      }
+    },
+    {
+      "id": "flutter-form-builder",
+      "name": "flutter_form_builder",
+      "kind": "package",
+      "package": "flutter_form_builder",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "表单输入",
+      "homepage": "https://pub.dev/packages/flutter_form_builder",
+      "repository": "https://github.com/flutter-form-builder-ecosystem/flutter_form_builder",
+      "description": "统一管理表单字段、校验与提交。",
+      "best_for": "动态表单、问卷和复杂输入。",
+      "caution": "校验器常需配套 form_builder_validators；不要只依赖前端校验。",
+      "featured": false,
+      "tags": [
+        "表单输入",
+        "flutter_form_builder"
+      ],
+      "install": "flutter pub add flutter_form_builder",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/flutter_form_builder",
+        "score_source": "https://pub.dev/api/packages/flutter_form_builder/score",
+        "version": "11.0.0",
+        "published": "2026-08-15T15:15:47.329577Z",
+        "license": "MIT",
+        "sdk": ">=3.13.0 <4.0.0",
+        "flutter_sdk": ">=3.47.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "This package helps in creation of forms in Flutter by removing the boilerplate code, reusing validation, react to changes, and collect final user input."
+      }
+    },
+    {
+      "id": "intl",
+      "name": "intl",
+      "kind": "package",
+      "package": "intl",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Dart 团队",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "国际化",
+      "homepage": "https://pub.dev/packages/intl",
+      "repository": "https://github.com/dart-lang/i18n/tree/main/pkgs/intl",
+      "description": "日期、数字、消息等国际化工具。",
+      "best_for": "多语言、区域格式和本地化展示。",
+      "caution": "日期格式化不等于时区转换；与 Flutter SDK 的依赖版本协调。",
+      "featured": false,
+      "tags": [
+        "国际化",
+        "intl"
+      ],
+      "install": "flutter pub add intl",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/intl",
+        "score_source": "https://pub.dev/api/packages/intl/score",
+        "version": "0.20.3",
+        "published": "2026-06-25T09:21:11.857146Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": "^3.9.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Contains code to deal with internationalized/localized messages, date and number formatting and parsing, bi-directional text, and other internationalization issues."
+      }
+    },
+    {
+      "id": "easy-localization",
+      "name": "easy_localization",
+      "kind": "package",
+      "package": "easy_localization",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "国际化",
+      "homepage": "https://pub.dev/packages/easy_localization",
+      "repository": "https://github.com/aissat/easy_localization",
+      "description": "用资源文件和扩展封装 Flutter 本地化。",
+      "best_for": "多语言切换与翻译文件管理。",
+      "caution": "与 Flutter gen_l10n 路线比较后统一方案，避免重复消息体系。",
+      "featured": false,
+      "tags": [
+        "国际化",
+        "easy_localization"
+      ],
+      "install": "flutter pub add easy_localization",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/easy_localization",
+        "score_source": "https://pub.dev/api/packages/easy_localization/score",
+        "version": "3.0.8",
+        "published": "2025-07-24T21:45:56.640345Z",
+        "license": "MIT",
+        "sdk": ">=2.12.0 <4.0.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Easy and Fast internationalizing and localization your Flutter Apps, this package simplify the internationalizing process ."
+      }
+    },
+    {
+      "id": "url-launcher",
+      "name": "url_launcher",
+      "kind": "package",
+      "package": "url_launcher",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Flutter 团队",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "设备能力",
+      "homepage": "https://pub.dev/packages/url_launcher",
+      "repository": "https://github.com/flutter/packages/tree/main/packages/url_launcher/url_launcher",
+      "description": "按平台打开网址、电话或邮件等 URL。",
+      "best_for": "跳转浏览器、拨号与邮件。",
+      "caution": "配置平台查询权限，并处理不能打开的 URL。",
+      "featured": false,
+      "tags": [
+        "设备能力",
+        "url_launcher"
+      ],
+      "install": "flutter pub add url_launcher",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/url_launcher",
+        "score_source": "https://pub.dev/api/packages/url_launcher/score",
+        "version": "6.3.3",
+        "published": "2026-10-02T19:30:33.326395Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": "^3.11.0",
+        "flutter_sdk": ">=3.41.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter plugin for launching a URL. Supports web, phone, SMS, and email schemes."
+      }
+    },
+    {
+      "id": "permission-handler",
+      "name": "permission_handler",
+      "kind": "package",
+      "package": "permission_handler",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "设备能力",
+      "homepage": "https://pub.dev/packages/permission_handler",
+      "repository": "https://github.com/baseflow/flutter-permission-handler",
+      "description": "查询和请求平台运行时权限。",
+      "best_for": "相机、定位与通知权限引导。",
+      "caution": "仍需配置 Manifest / Info.plist，避免一次申请无关权限。",
+      "featured": false,
+      "tags": [
+        "设备能力",
+        "permission_handler"
+      ],
+      "install": "flutter pub add permission_handler",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/permission_handler",
+        "score_source": "https://pub.dev/api/packages/permission_handler/score",
+        "version": "13.0.2",
+        "published": "2026-09-04T09:59:07.411412Z",
+        "license": "MIT",
+        "sdk": "^3.6.0",
+        "flutter_sdk": ">=3.24.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Permission plugin for Flutter. This plugin provides a cross-platform (iOS, Android) API to request and check permissions."
+      }
+    },
+    {
+      "id": "geolocator",
+      "name": "geolocator",
+      "kind": "package",
+      "package": "geolocator",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "设备能力",
+      "homepage": "https://pub.dev/packages/geolocator",
+      "repository": "https://github.com/baseflow/flutter-geolocator/tree/main/geolocator",
+      "description": "获取定位、定位权限和位置变化。",
+      "best_for": "地图定位、附近内容和轨迹采集。",
+      "caution": "后台定位、精度和平台合规配置需要独立设计。",
+      "featured": false,
+      "tags": [
+        "设备能力",
+        "geolocator"
+      ],
+      "install": "flutter pub add geolocator",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/geolocator",
+        "score_source": "https://pub.dev/api/packages/geolocator/score",
+        "version": "14.1.2",
+        "published": "2026-10-19T15:29:42.700997Z",
+        "license": "MIT",
+        "sdk": "^3.5.0",
+        "flutter_sdk": ">=2.8.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Geolocation plugin for Flutter. This plugin provides a cross-platform (iOS, Android) API for generic location (GPS etc.) functions."
+      }
+    },
+    {
+      "id": "device-info-plus",
+      "name": "device_info_plus",
+      "kind": "package",
+      "package": "device_info_plus",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "设备能力",
+      "homepage": "https://pub.dev/packages/device_info_plus",
+      "repository": "https://github.com/fluttercommunity/plus_plugins/tree/main/packages/device_info_plus/device_info_plus",
+      "description": "读取平台和设备信息。",
+      "best_for": "兼容性诊断与设备环境展示。",
+      "caution": "信息字段因平台而异，不要把设备信息当稳定用户身份。",
+      "featured": false,
+      "tags": [
+        "设备能力",
+        "device_info_plus"
+      ],
+      "install": "flutter pub add device_info_plus",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/device_info_plus",
+        "score_source": "https://pub.dev/api/packages/device_info_plus/score",
+        "version": "13.3.0",
+        "published": "2026-10-01T19:32:00.385215Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": ">=3.10.0 <4.0.0",
+        "flutter_sdk": ">=3.38.1",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter plugin providing detailed information about the device (make, model, etc.), and Android or iOS version the app is running on."
+      }
+    },
+    {
+      "id": "package-info-plus",
+      "name": "package_info_plus",
+      "kind": "package",
+      "package": "package_info_plus",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "设备能力",
+      "homepage": "https://pub.dev/packages/package_info_plus",
+      "repository": "https://github.com/fluttercommunity/plus_plugins/tree/main/packages/package_info_plus/package_info_plus",
+      "description": "读取应用名称、包名、版本与构建号。",
+      "best_for": "关于页、版本展示与问题反馈。",
+      "caution": "构建号与商店版本更新检查是不同能力。",
+      "featured": false,
+      "tags": [
+        "设备能力",
+        "package_info_plus"
+      ],
+      "install": "flutter pub add package_info_plus",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/package_info_plus",
+        "score_source": "https://pub.dev/api/packages/package_info_plus/score",
+        "version": "10.2.2",
+        "published": "2026-10-01T19:31:55.187002Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": ">=3.10.0 <4.0.0",
+        "flutter_sdk": ">=3.38.1",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter plugin for querying information about the application package, such as CFBundleVersion on iOS or versionCode on Android."
+      }
+    },
+    {
+      "id": "share-plus",
+      "name": "share_plus",
+      "kind": "package",
+      "package": "share_plus",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "设备能力",
+      "homepage": "https://pub.dev/packages/share_plus",
+      "repository": "https://github.com/fluttercommunity/plus_plugins/tree/main/packages/share_plus/share_plus",
+      "description": "调用平台原生分享界面。",
+      "best_for": "分享文字、链接或文件。",
+      "caution": "不同平台文件支持与弹窗定位要求不同。",
+      "featured": false,
+      "tags": [
+        "设备能力",
+        "share_plus"
+      ],
+      "install": "flutter pub add share_plus",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/share_plus",
+        "score_source": "https://pub.dev/api/packages/share_plus/score",
+        "version": "13.3.1",
+        "published": "2026-10-01T19:31:45.572575Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": ">=3.10.0 <4.0.0",
+        "flutter_sdk": ">=3.38.1",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter plugin for sharing content via the platform share UI, using the ACTION_SEND intent on Android and UIActivityViewController on iOS."
+      }
+    },
+    {
+      "id": "flutter-local-notifications",
+      "name": "flutter_local_notifications",
+      "kind": "package",
+      "package": "flutter_local_notifications",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "通知任务",
+      "homepage": "https://pub.dev/packages/flutter_local_notifications",
+      "repository": "https://github.com/MaikuB/flutter_local_notifications/tree/master/flutter_local_notifications",
+      "description": "显示本地通知和定时提醒。",
+      "best_for": "本地提醒、下载完成与任务反馈。",
+      "caution": "不是远程推送服务；需处理通知权限、时区和平台限制。",
+      "featured": false,
+      "tags": [
+        "通知任务",
+        "flutter_local_notifications"
+      ],
+      "install": "flutter pub add flutter_local_notifications",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/flutter_local_notifications",
+        "score_source": "https://pub.dev/api/packages/flutter_local_notifications/score",
+        "version": "22.3.3",
+        "published": "2026-10-25T03:06:31.843179Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": "^3.10.0",
+        "flutter_sdk": ">=3.38.1",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A cross platform plugin for displaying and scheduling local notifications for Flutter applications with the ability to customise for each platform."
+      }
+    },
+    {
+      "id": "firebase-messaging",
+      "name": "firebase_messaging",
+      "kind": "package",
+      "package": "firebase_messaging",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Firebase / FlutterFire",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "通知任务",
+      "homepage": "https://pub.dev/packages/firebase_messaging",
+      "repository": "https://github.com/firebase/flutterfire/tree/main/packages/firebase_messaging/firebase_messaging",
+      "description": "Firebase Cloud Messaging 的 Flutter 接入。",
+      "best_for": "服务端推送、通知令牌与消息回调。",
+      "caution": "需要 Firebase 配置；推送可达性受平台与服务可用性影响。",
+      "featured": false,
+      "tags": [
+        "通知任务",
+        "firebase_messaging"
+      ],
+      "install": "flutter pub add firebase_messaging",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/firebase_messaging",
+        "score_source": "https://pub.dev/api/packages/firebase_messaging/score",
+        "version": "17.0.1",
+        "published": "2026-10-23T08:47:20.023812Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": "^3.6.0",
+        "flutter_sdk": ">=3.27.0",
+        "platforms": [
+          "android",
+          "ios",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter plugin for Firebase Cloud Messaging, a cross-platform messaging solution that lets you reliably deliver messages on Android and iOS."
+      }
+    },
+    {
+      "id": "workmanager",
+      "name": "workmanager",
+      "kind": "package",
+      "package": "workmanager",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "通知任务",
+      "homepage": "https://pub.dev/packages/workmanager",
+      "repository": "https://github.com/fluttercommunity/flutter_workmanager",
+      "description": "对接平台后台任务调度。",
+      "best_for": "周期同步与延迟后台工作。",
+      "caution": "系统决定实际运行时机，不能保证准点或持续执行。",
+      "featured": false,
+      "tags": [
+        "通知任务",
+        "workmanager"
+      ],
+      "install": "flutter pub add workmanager",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/workmanager",
+        "score_source": "https://pub.dev/api/packages/workmanager/score",
+        "version": "0.10.10",
+        "published": "2026-09-07T10:27:55.576197Z",
+        "license": "MIT",
+        "sdk": ">=3.5.0 <4.0.0",
+        "flutter_sdk": ">=3.38.0",
+        "platforms": [
+          "android",
+          "ios",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter Workmanager. This plugin allows you to schedule background work on Android and iOS."
+      }
+    },
+    {
+      "id": "webview-flutter",
+      "name": "webview_flutter",
+      "kind": "package",
+      "package": "webview_flutter",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Flutter 团队",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "WebView",
+      "homepage": "https://pub.dev/packages/webview_flutter",
+      "repository": "https://github.com/flutter/packages/tree/main/packages/webview_flutter/webview_flutter",
+      "description": "Flutter 官方生态的系统 WebView 插件。",
+      "best_for": "嵌入网页、帮助中心和已有 H5。",
+      "caution": "核对支持平台；限制 JS 桥接和可导航域名。",
+      "featured": false,
+      "tags": [
+        "WebView",
+        "webview_flutter"
+      ],
+      "install": "flutter pub add webview_flutter",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/webview_flutter",
+        "score_source": "https://pub.dev/api/packages/webview_flutter/score",
+        "version": "4.14.1",
+        "published": "2026-07-07T17:29:37.749395Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": "^3.10.0",
+        "flutter_sdk": ">=3.38.0",
+        "platforms": [
+          "android",
+          "ios",
+          "macos"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A Flutter plugin that provides a WebView widget backed by the system webview."
+      }
+    },
+    {
+      "id": "flutter-inappwebview",
+      "name": "flutter_inappwebview",
+      "kind": "package",
+      "package": "flutter_inappwebview",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "WebView",
+      "homepage": "https://pub.dev/packages/flutter_inappwebview",
+      "repository": "https://github.com/pichillilorenzo/flutter_inappwebview",
+      "description": "提供更多 WebView 配置、事件与浏览器能力。",
+      "best_for": "复杂 H5 集成、桥接与细粒度页面控制。",
+      "caution": "原生配置较多；权限、URL 与 JS 桥接都需按场景约束。",
+      "featured": false,
+      "tags": [
+        "WebView",
+        "flutter_inappwebview"
+      ],
+      "install": "flutter pub add flutter_inappwebview",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/flutter_inappwebview",
+        "score_source": "https://pub.dev/api/packages/flutter_inappwebview/score",
+        "version": "6.1.5",
+        "published": "2024-10-08T22:11:28.023785Z",
+        "license": "APACHE-2.0",
+        "sdk": "^3.5.0",
+        "flutter_sdk": ">=3.24.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A Flutter plugin that allows you to add an inline webview, to use an headless webview, and to open an in-app browser window."
+      }
+    },
+    {
+      "id": "mobile-scanner",
+      "name": "mobile_scanner",
+      "kind": "package",
+      "package": "mobile_scanner",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "扫码地图",
+      "homepage": "https://pub.dev/packages/mobile_scanner",
+      "repository": "https://github.com/juliansteenbakker/mobile_scanner",
+      "description": "使用平台能力扫描二维码与条形码。",
+      "best_for": "扫码登录、商品码与信息录入。",
+      "caution": "扫描结果不可信；需要相机权限与生命周期处理。",
+      "featured": false,
+      "tags": [
+        "扫码地图",
+        "mobile_scanner"
+      ],
+      "install": "flutter pub add mobile_scanner",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/mobile_scanner",
+        "score_source": "https://pub.dev/api/packages/mobile_scanner/score",
+        "version": "7.4.3",
+        "published": "2026-10-31T08:07:42.937746Z",
+        "license": "BSD-3-Clause",
+        "sdk": "^3.7.0",
+        "flutter_sdk": ">=3.29.0",
+        "platforms": [],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A universal Flutter barcode and QR code scanner using CameraX/ML Kit for Android, AVFoundation/Apple Vision for iOS & macOS, and ZXing for web."
+      },
+      "license_review": {
+        "label": "BSD-3-Clause",
+        "source": "https://pub.dev/packages/mobile_scanner/license",
+        "checked_on": "2026-11-01"
+      }
+    },
+    {
+      "id": "flutter-map",
+      "name": "flutter_map",
+      "kind": "package",
+      "package": "flutter_map",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "扫码地图",
+      "homepage": "https://pub.dev/packages/flutter_map",
+      "repository": "https://github.com/fleaflet/flutter_map",
+      "description": "可扩展的 Flutter 地图组件。",
+      "best_for": "瓦片地图、标记与地理数据展示。",
+      "caution": "组件开源不等于地图服务免费；遵守瓦片授权与署名规则。",
+      "featured": false,
+      "tags": [
+        "扫码地图",
+        "flutter_map"
+      ],
+      "install": "flutter pub add flutter_map",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/flutter_map",
+        "score_source": "https://pub.dev/api/packages/flutter_map/score",
+        "version": "8.3.2",
+        "published": "2026-08-27T21:34:57.558084Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": ">=3.6.0 <4.0.0",
+        "flutter_sdk": ">=3.27.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter's №1 non-commercially aimed map client: it's easy-to-use, versatile, vendor-free, fully cross-platform, and 100% pure-Flutter"
+      }
+    },
+    {
+      "id": "google-maps-flutter",
+      "name": "google_maps_flutter",
+      "kind": "package",
+      "package": "google_maps_flutter",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Flutter 团队",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "扫码地图",
+      "homepage": "https://pub.dev/packages/google_maps_flutter",
+      "repository": "https://github.com/flutter/packages/tree/main/packages/google_maps_flutter/google_maps_flutter",
+      "description": "在 Flutter 中嵌入 Google Maps。",
+      "best_for": "依赖 Google 地图服务的移动 / Web 产品。",
+      "caution": "需要 Google Maps 配置、API Key；地图服务可能计费。",
+      "featured": false,
+      "tags": [
+        "扫码地图",
+        "google_maps_flutter"
+      ],
+      "install": "flutter pub add google_maps_flutter",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/google_maps_flutter",
+        "score_source": "https://pub.dev/api/packages/google_maps_flutter/score",
+        "version": "2.19.0",
+        "published": "2026-10-14T17:34:38.697353Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": "^3.13.0",
+        "flutter_sdk": ">=3.47.0",
+        "platforms": [
+          "android",
+          "ios",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A Flutter plugin for integrating Google Maps in iOS and Android applications."
+      }
+    },
+    {
+      "id": "mocktail",
+      "name": "mocktail",
+      "kind": "package",
+      "package": "mocktail",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "测试质量",
+      "homepage": "https://pub.dev/packages/mocktail",
+      "repository": "https://github.com/felangel/mocktail",
+      "description": "无需代码生成的 Dart Mock 工具。",
+      "best_for": "单元测试替身、业务依赖隔离。",
+      "caution": "作为开发依赖；优先验证行为而非内部调用细节。",
+      "featured": false,
+      "tags": [
+        "测试质量",
+        "mocktail"
+      ],
+      "install": "flutter pub add --dev mocktail",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/mocktail",
+        "score_source": "https://pub.dev/api/packages/mocktail/score",
+        "version": "1.0.5",
+        "published": "2026-04-10T04:16:05.020857Z",
+        "license": "MIT",
+        "sdk": ">=2.12.0 <4.0.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A Dart mock library which simplifies mocking with null safety support and no manual mocks or code generation."
+      }
+    },
+    {
+      "id": "bloc-test",
+      "name": "bloc_test",
+      "kind": "package",
+      "package": "bloc_test",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "测试质量",
+      "homepage": "https://pub.dev/packages/bloc_test",
+      "repository": "https://github.com/felangel/bloc/tree/master/packages/bloc_test",
+      "description": "为 Bloc / Cubit 提供状态流测试辅助。",
+      "best_for": "验证状态迁移和异常分支。",
+      "caution": "作为开发依赖，版本需与 bloc / flutter_bloc 协调。",
+      "featured": false,
+      "tags": [
+        "测试质量",
+        "bloc_test"
+      ],
+      "install": "flutter pub add --dev bloc_test",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/bloc_test",
+        "score_source": "https://pub.dev/api/packages/bloc_test/score",
+        "version": "10.0.0",
+        "published": "2025-01-12T21:09:50.622153Z",
+        "license": "MIT",
+        "sdk": ">=2.14.0 <4.0.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A testing library which makes it easy to test blocs. Built to be used with the bloc state management package."
+      }
+    },
+    {
+      "id": "patrol",
+      "name": "patrol",
+      "kind": "package",
+      "package": "patrol",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "测试质量",
+      "homepage": "https://pub.dev/packages/patrol",
+      "repository": "https://github.com/leancodepl/patrol/tree/master/packages/patrol",
+      "description": "将 Flutter 测试与原生自动化结合。",
+      "best_for": "登录授权、系统弹窗和设备端集成测试。",
+      "caution": "作为开发依赖；需要真机或模拟器及平台工具链。",
+      "featured": false,
+      "tags": [
+        "测试质量",
+        "patrol"
+      ],
+      "install": "flutter pub add --dev patrol",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/patrol",
+        "score_source": "https://pub.dev/api/packages/patrol/score",
+        "version": "4.10.0",
+        "published": "2026-09-15T09:46:06.327800Z",
+        "license": "APACHE-2.0",
+        "sdk": ">=3.8.0 <4.0.0",
+        "flutter_sdk": ">=3.32.0",
+        "platforms": [
+          "android",
+          "ios",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "A powerful, multiplatform E2E UI testing framework for Flutter apps that overcomes the limitations of integration_test by handling native interactions.\n"
+      }
+    },
+    {
+      "id": "flutter-lints",
+      "name": "flutter_lints",
+      "kind": "package",
+      "package": "flutter_lints",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Flutter 团队",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "测试质量",
+      "homepage": "https://pub.dev/packages/flutter_lints",
+      "repository": "https://github.com/flutter/packages/tree/main/packages/flutter_lints",
+      "description": "Flutter 推荐代码规范规则集。",
+      "best_for": "项目基础静态检查。",
+      "caution": "作为开发依赖并在 analysis_options.yaml 启用。",
+      "featured": false,
+      "tags": [
+        "测试质量",
+        "flutter_lints"
+      ],
+      "install": "flutter pub add --dev flutter_lints",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/flutter_lints",
+        "score_source": "https://pub.dev/api/packages/flutter_lints/score",
+        "version": "6.0.0",
+        "published": "2025-05-27T13:59:16.618213Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": "^3.8.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Recommended lints for Flutter apps, packages, and plugins to encourage good coding practices."
+      }
+    },
+    {
+      "id": "sentry-flutter",
+      "name": "sentry_flutter",
+      "kind": "package",
+      "package": "sentry_flutter",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "监控分析",
+      "homepage": "https://pub.dev/packages/sentry_flutter",
+      "repository": "https://github.com/getsentry/sentry-dart",
+      "description": "集成错误上报和性能观测。",
+      "best_for": "线上异常追踪、发布诊断。",
+      "caution": "SDK 开源；托管服务独立计费，注意上报隐私和采样。",
+      "featured": false,
+      "tags": [
+        "监控分析",
+        "sentry_flutter"
+      ],
+      "install": "flutter pub add sentry_flutter",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/sentry_flutter",
+        "score_source": "https://pub.dev/api/packages/sentry_flutter/score",
+        "version": "10.2.0",
+        "published": "2026-10-22T14:25:47.160243Z",
+        "license": "MIT",
+        "sdk": ">=3.12.0 <4.0.0",
+        "flutter_sdk": ">=3.44.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Sentry SDK for Flutter. This package aims to support different Flutter targets by relying on the many platforms supported by Sentry with native SDKs."
+      }
+    },
+    {
+      "id": "logger",
+      "name": "logger",
+      "kind": "package",
+      "package": "logger",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "监控分析",
+      "homepage": "https://pub.dev/packages/logger",
+      "repository": "https://github.com/SourceHorizon/logger",
+      "description": "提供格式化的 Dart 日志输出。",
+      "best_for": "开发调试、可读日志与分级记录。",
+      "caution": "生产日志需脱敏与控制开销，不应打印凭证。",
+      "featured": false,
+      "tags": [
+        "监控分析",
+        "logger"
+      ],
+      "install": "flutter pub add logger",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/logger",
+        "score_source": "https://pub.dev/api/packages/logger/score",
+        "version": "2.8.0",
+        "published": "2026-09-05T17:20:29.963495Z",
+        "license": "MIT",
+        "sdk": ">=2.17.0 <4.0.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Small, easy to use and extensible logger which prints beautiful logs."
+      }
+    },
+    {
+      "id": "responsive-framework",
+      "name": "responsive_framework",
+      "kind": "package",
+      "package": "responsive_framework",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "布局适配",
+      "homepage": "https://pub.dev/packages/responsive_framework",
+      "repository": "https://github.com/Codelessly/ResponsiveFramework",
+      "description": "提供断点与响应式布局辅助。",
+      "best_for": "手机、平板与桌面布局切换。",
+      "caution": "缩放不能替代真正重排，仍需检查文字放大与可访问性。",
+      "featured": false,
+      "tags": [
+        "布局适配",
+        "responsive_framework"
+      ],
+      "install": "flutter pub add responsive_framework",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/responsive_framework",
+        "score_source": "https://pub.dev/api/packages/responsive_framework/score",
+        "version": "1.5.1",
+        "published": "2024-08-26T16:35:44.517480Z",
+        "license": "MIT",
+        "sdk": ">=3.0.0 <4.0.0",
+        "flutter_sdk": ">=3.7.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Easily make Flutter apps responsive. Automatically adapt UI to different screen sizes. Responsiveness made simple."
+      }
+    },
+    {
+      "id": "gap",
+      "name": "gap",
+      "kind": "package",
+      "package": "gap",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "pub.dev 开源社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "布局适配",
+      "homepage": "https://pub.dev/packages/gap",
+      "repository": "https://github.com/letsar/gap",
+      "description": "用可读组件声明 Flex 布局间距。",
+      "best_for": "行列间距与统一布局节奏。",
+      "caution": "适合简单间距，不承担响应式布局。",
+      "featured": false,
+      "tags": [
+        "布局适配",
+        "gap"
+      ],
+      "install": "flutter pub add gap",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/gap",
+        "score_source": "https://pub.dev/api/packages/gap/score",
+        "version": "3.0.1",
+        "published": "2023-06-24T09:22:05.766623Z",
+        "license": "MIT",
+        "sdk": ">=2.12.0 <4.0.0",
+        "flutter_sdk": ">=3.7.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter widgets for easily adding gaps inside Flex widgets such as Columns and Rows or scrolling views."
+      }
+    },
+    {
+      "id": "tdesign-flutter",
+      "name": "TDesign Flutter",
+      "kind": "flutter",
+      "package": "tdesign_flutter",
+      "manager": "pub",
+      "origin": "tencent",
+      "owner": "腾讯 TDesign",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "完整 UI",
+      "homepage": "https://tdesign.tencent.com/flutter/overview",
+      "repository": "https://github.com/Tencent/tdesign-flutter",
+      "description": "腾讯 TDesign 的 Flutter 组件实现。",
+      "best_for": "中文业务应用、腾讯设计语言和移动界面。",
+      "caution": "按具体组件检查桌面与 Web 行为；设计规范需与产品统一。",
+      "featured": true,
+      "tags": [
+        "完整 UI",
+        "tdesign_flutter"
+      ],
+      "install": "flutter pub add tdesign_flutter",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/tdesign_flutter",
+        "score_source": "https://pub.dev/api/packages/tdesign_flutter/score",
+        "version": "1.1.0",
+        "published": "2026-10-28T10:48:43.582690Z",
+        "license": "MIT",
+        "sdk": ">=3.8.0 <4.0.0",
+        "flutter_sdk": ">=3.32.0",
+        "platforms": [],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Tencent TDesign UI component library of Flutter, suitable for use in mobile projects."
+      },
+      "license_review": {
+        "label": "MIT",
+        "source": "https://github.com/Tencent/tdesign-flutter/blob/develop/LICENSE",
+        "checked_on": "2026-11-01"
+      }
+    },
+    {
+      "id": "forui",
+      "name": "Forui",
+      "kind": "flutter",
+      "package": "forui",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Duobase / 社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "完整 UI",
+      "homepage": "https://forui.dev/",
+      "repository": "https://github.com/duobaseio/forui/tree/main/forui",
+      "description": "受 shadcn/ui 风格启发的 Flutter 组件体系。",
+      "best_for": "希望统一主题、搭建现代产品界面的应用。",
+      "caution": "社区维护；嵌入字体等资源可能有独立许可证。",
+      "featured": true,
+      "tags": [
+        "完整 UI",
+        "forui"
+      ],
+      "install": "flutter pub add forui",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/forui",
+        "score_source": "https://pub.dev/api/packages/forui/score",
+        "version": "0.27.7",
+        "published": "2026-10-26T05:02:22.499956Z",
+        "license": "OFL-1.1, MIT",
+        "sdk": ">=3.13.0-0 <4.0.0",
+        "flutter_sdk": ">=3.47.0-0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Beautifully designed, minimalistic Flutter widgets for desktop & touch devices. Designs are heavily inspired by shadcn/ui and are fully customizable."
+      }
+    },
+    {
+      "id": "shadcn-ui",
+      "name": "Flutter shadcn UI",
+      "kind": "flutter",
+      "package": "shadcn_ui",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "Flutter 社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "完整 UI",
+      "homepage": "https://pub.dev/packages/shadcn_ui",
+      "repository": "https://github.com/nank1ro/flutter-shadcn-ui",
+      "description": "将 shadcn/ui 视觉风格带到 Flutter 的社区实现。",
+      "best_for": "简洁产品界面、可定制主题和组件。",
+      "caution": "不是 Web shadcn/ui 官方跨端版本；勿混用不同 Flutter 移植包。",
+      "featured": false,
+      "tags": [
+        "完整 UI",
+        "shadcn_ui"
+      ],
+      "install": "flutter pub add shadcn_ui",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/shadcn_ui",
+        "score_source": "https://pub.dev/api/packages/shadcn_ui/score",
+        "version": "0.57.4",
+        "published": "2026-10-30T17:20:52.472940Z",
+        "license": "MIT",
+        "sdk": ">=3.11.0 <4.0.0",
+        "flutter_sdk": ">=3.41.0",
+        "platforms": [],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "shadcn/ui ported in Flutter. Awesome UI components for Flutter, fully customizable."
+      },
+      "license_review": {
+        "label": "MIT",
+        "source": "https://github.com/nank1ro/flutter-shadcn-ui/blob/main/LICENSE",
+        "checked_on": "2026-11-01"
+      }
+    },
+    {
+      "id": "shadcn-flutter",
+      "name": "shadcn_flutter",
+      "kind": "flutter",
+      "package": "shadcn_flutter",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "sunarya-thito / 社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "完整 UI",
+      "homepage": "https://pub.dev/packages/shadcn_flutter",
+      "repository": "https://github.com/sunarya-thito/shadcn_flutter",
+      "description": "另一套 shadcn 风格 Flutter 组件体系。",
+      "best_for": "偏好完整统一主题的 Flutter 产品。",
+      "caution": "与 shadcn_ui 是不同项目，API 和升级路线不通用。",
+      "featured": false,
+      "tags": [
+        "完整 UI",
+        "shadcn_flutter"
+      ],
+      "install": "flutter pub add shadcn_flutter",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/shadcn_flutter",
+        "score_source": "https://pub.dev/api/packages/shadcn_flutter/score",
+        "version": "0.0.55",
+        "published": "2026-10-01T08:59:05.088725Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": ">=3.13.0 <4.0.0",
+        "flutter_sdk": ">=3.47.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Beautifully designed components from Shadcn/UI is now available for Flutter"
+      }
+    },
+    {
+      "id": "fluent-ui",
+      "name": "Fluent UI for Flutter",
+      "kind": "flutter",
+      "package": "fluent_ui",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "bdlukaa / 社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "桌面 UI",
+      "homepage": "https://pub.dev/packages/fluent_ui",
+      "repository": "https://github.com/bdlukaa/fluent_ui",
+      "description": "Flutter 社区实现的 Fluent Design 组件。",
+      "best_for": "Windows 风格的桌面应用。",
+      "caution": "不是微软官方 Flutter UI 包；各平台需验证窗口和输入行为。",
+      "featured": true,
+      "tags": [
+        "桌面 UI",
+        "fluent_ui"
+      ],
+      "install": "flutter pub add fluent_ui",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/fluent_ui",
+        "score_source": "https://pub.dev/api/packages/fluent_ui/score",
+        "version": "4.17.0",
+        "published": "2026-10-19T15:30:17.120162Z",
+        "license": "BSD-3-CLAUSE",
+        "sdk": ">=3.8.0 <4.0.0",
+        "flutter_sdk": ">=3.32.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Implements Microsoft's Windows User Interface in Flutter."
+      }
+    },
+    {
+      "id": "macos-ui",
+      "name": "macOS UI",
+      "kind": "flutter",
+      "package": "macos_ui",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "macos_ui 社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "桌面 UI",
+      "homepage": "https://pub.dev/packages/macos_ui",
+      "repository": "https://github.com/GroovinChip/macos_ui",
+      "description": "Flutter 社区实现的 macOS 风格组件。",
+      "best_for": "macOS 应用或需要 macOS 视觉的桌面工具。",
+      "caution": "不是 Apple 官方库，原生窗口能力可能需要额外插件。",
+      "featured": false,
+      "tags": [
+        "桌面 UI",
+        "macos_ui"
+      ],
+      "install": "flutter pub add macos_ui",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/macos_ui",
+        "score_source": "https://pub.dev/api/packages/macos_ui/score",
+        "version": "2.2.2",
+        "published": "2025-10-19T21:07:21.996147Z",
+        "license": "MIT",
+        "sdk": ">=3.9.2 <4.0.0",
+        "flutter_sdk": ">=3.35.0",
+        "platforms": [
+          "macos"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "Flutter widgets and themes implementing the current macOS design language."
+      }
+    },
+    {
+      "id": "bruno",
+      "name": "Bruno",
+      "kind": "flutter",
+      "package": "bruno",
+      "manager": "pub",
+      "origin": "community",
+      "owner": "贝壳 LianjiaTech",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "完整 UI",
+      "homepage": "https://pub.dev/packages/bruno",
+      "repository": "https://github.com/LianjiaTech/bruno",
+      "description": "贝壳开源的业务型 Flutter 组件库。",
+      "best_for": "中文移动业务、表单和复杂业务组件参考。",
+      "caution": "pub 发布较早，集成前核查 SDK、依赖与维护情况。",
+      "featured": false,
+      "tags": [
+        "完整 UI",
+        "bruno"
+      ],
+      "install": "flutter pub add bruno",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/bruno",
+        "score_source": "https://pub.dev/api/packages/bruno/score",
+        "version": "3.4.3",
+        "published": "2023-09-13T13:13:49.232379Z",
+        "license": "MIT",
+        "sdk": ">=2.17.0 <4.0.0",
+        "flutter_sdk": ">=3.7.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "An enterprise-class package of Flutter components for mobile applications."
+      }
+    },
+    {
+      "id": "flukit",
+      "name": "flukit",
+      "kind": "flutter",
+      "package": "flukit",
+      "manager": "pub",
+      "origin": "community",
+      "owner": "FlutterChina 社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "专项组件",
+      "homepage": "https://pub.dev/packages/flukit",
+      "repository": "https://github.com/flutterchina/flukit",
+      "description": "FlutterChina 社区的常用组件与示例集合。",
+      "best_for": "学习组件实现、查找现成基础交互。",
+      "caution": "pub.dev 已标记停止维护，仅保留历史参考；不要作为新项目默认基础。",
+      "featured": false,
+      "tags": [
+        "专项组件",
+        "flukit"
+      ],
+      "install": "flutter pub add flukit",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/flukit",
+        "score_source": "https://pub.dev/api/packages/flukit/score",
+        "version": "3.0.1",
+        "published": "2022-06-21T08:05:38.306988Z",
+        "license": "MIT",
+        "sdk": ">=2.14.0 <3.0.0",
+        "flutter_sdk": "",
+        "platforms": [],
+        "discontinued": true,
+        "unlisted": true,
+        "registry_description": "flukit(Flutter UI Kit), a flutter  common library which contains ScaleView, Swiper, PullRefrsh, WaterMark, GradientCircularProgressIndicator..."
+      }
+    },
+    {
+      "id": "getwidget",
+      "name": "GetWidget",
+      "kind": "flutter",
+      "package": "getwidget",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "GetWidget 社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "完整 UI",
+      "homepage": "https://www.getwidget.dev/",
+      "repository": "https://github.com/ionicfirebaseapp/getwidget",
+      "description": "提供大量预制 Flutter 视觉组件。",
+      "best_for": "快速原型、展示页面和通用移动界面。",
+      "caution": "组件多不等于全部适合项目，先验证主题与无障碍。",
+      "featured": false,
+      "tags": [
+        "完整 UI",
+        "getwidget"
+      ],
+      "install": "flutter pub add getwidget",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/getwidget",
+        "score_source": "https://pub.dev/api/packages/getwidget/score",
+        "version": "7.0.2",
+        "published": "2026-05-24T07:19:34.865135Z",
+        "license": "MIT",
+        "sdk": ">=2.12.0 <4.0.0",
+        "flutter_sdk": "",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "GetWidget is an open-source Flutter UI Kit with 1,000+ production-ready widgets (buttons, cards, carousels, forms, and more). Maintained since 2017 by the team at getwidget.dev."
+      }
+    },
+    {
+      "id": "flutter-platform-widgets",
+      "name": "flutter_platform_widgets",
+      "kind": "flutter",
+      "package": "flutter_platform_widgets",
+      "manager": "pub",
+      "origin": "international",
+      "owner": "社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "平台适配",
+      "homepage": "https://pub.dev/packages/flutter_platform_widgets",
+      "repository": "https://github.com/stryder-dev/flutter_platform_widgets",
+      "description": "在 Material 与 Cupertino 组件间做平台适配。",
+      "best_for": "希望按 iOS / Android 平台呈现不同控件的应用。",
+      "caution": "pub.dev 已标记停止维护；较新的发布日期不代表仍在维护。",
+      "featured": false,
+      "tags": [
+        "平台适配",
+        "flutter_platform_widgets"
+      ],
+      "install": "flutter pub add flutter_platform_widgets",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/flutter_platform_widgets",
+        "score_source": "https://pub.dev/api/packages/flutter_platform_widgets/score",
+        "version": "10.0.1",
+        "published": "2026-01-14T02:59:33.068129Z",
+        "license": "MIT",
+        "sdk": ">=3.8.0-0 <4.0.0",
+        "flutter_sdk": ">=3.38.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": true,
+        "unlisted": true,
+        "registry_description": "Simplifying the use of both Material and Cupertino widgets with a single widget"
+      }
+    },
+    {
+      "id": "flutter-smart-dialog",
+      "name": "Smart Dialog",
+      "kind": "flutter",
+      "package": "flutter_smart_dialog",
+      "manager": "pub",
+      "origin": "community",
+      "owner": "FlutterCandies 社区",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "弹层反馈",
+      "homepage": "https://pub.dev/packages/flutter_smart_dialog",
+      "repository": "https://github.com/fluttercandies/flutter_smart_dialog",
+      "description": "提供 Toast、Loading、Dialog 等弹层管理。",
+      "best_for": "全局反馈、加载态和业务弹层。",
+      "caution": "专项组件，不是完整 UI；测试返回键、焦点和路由生命周期。",
+      "featured": false,
+      "tags": [
+        "弹层反馈",
+        "FlutterCandies 社区"
+      ],
+      "install": "flutter pub add flutter_smart_dialog",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/flutter_smart_dialog",
+        "score_source": "https://pub.dev/api/packages/flutter_smart_dialog/score",
+        "version": "5.3.0",
+        "published": "2026-08-23T13:14:45.360349Z",
+        "license": "MIT",
+        "sdk": "^3.12.0",
+        "flutter_sdk": ">=3.44.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "An elegant Flutter Dialog solution, Easily implement Toast, Loading and custom Dialog, Make the use of the dialog easier!"
+      }
+    },
+    {
+      "id": "scroll-kit",
+      "name": "ScrollKit",
+      "kind": "flutter",
+      "package": "scroll_kit",
+      "manager": "pub",
+      "origin": "bytedance",
+      "owner": "字节跳动",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "滚动交互",
+      "homepage": "https://pub.dev/packages/scroll_kit",
+      "repository": "https://github.com/bytedance/scroll_kit",
+      "description": "字节开源的按索引定位、双向加载等滚动专项组件。",
+      "best_for": "了解字节 Flutter 开源与历史滚动实现。",
+      "caution": "仓库已于 2025-04-08 归档，仅供历史参考，不作为新项目默认依赖。",
+      "featured": false,
+      "tags": [
+        "滚动交互",
+        "字节跳动"
+      ],
+      "install": "flutter pub add scroll_kit",
+      "status": "archived",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://pub.dev/api/packages/scroll_kit",
+        "score_source": "https://pub.dev/api/packages/scroll_kit/score",
+        "version": "0.1.0",
+        "published": "2022-09-19T12:02:49.098304Z",
+        "license": "MIT",
+        "sdk": ">=2.18.0 <3.0.0",
+        "flutter_sdk": ">=1.17.0",
+        "platforms": [
+          "android",
+          "ios",
+          "windows",
+          "linux",
+          "macos",
+          "web"
+        ],
+        "discontinued": false,
+        "unlisted": false,
+        "registry_description": "ScrollKit provides additional features for list in Flutter Apps."
+      }
+    },
+    {
+      "id": "fluttergo",
+      "name": "FlutterGo",
+      "kind": "flutter",
+      "package": "",
+      "manager": "source",
+      "origin": "alibaba",
+      "owner": "阿里巴巴",
+      "frameworks": [
+        "Flutter",
+        "Dart"
+      ],
+      "category": "学习示例",
+      "homepage": "https://github.com/alibaba/flutter-go",
+      "repository": "https://github.com/alibaba/flutter-go",
+      "description": "阿里开源的 Flutter 中文组件示例与学习 App。",
+      "best_for": "阅读历史组件示例，了解早期 Flutter 应用组织。",
+      "caution": "README 明确暂停维护；这是示例应用，不能当成可直接安装的通用 UI 包。",
+      "featured": false,
+      "tags": [
+        "历史参考",
+        "学习示例"
+      ],
+      "install": "",
+      "status": "paused",
+      "snapshot": {
+        "checked_on": "2026-11-01",
+        "source": "https://github.com/alibaba/flutter-go/blob/master/README.md",
+        "license": "BSD-3-Clause"
+      }
+    }
+  ],
+  "metadata_checked_on": "2026-11-01"
+}

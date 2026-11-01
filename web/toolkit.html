@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fa">
+  <meta name="description" content="精选 Web 开源 UI、Flutter UI 与常用 pub.dev 包：按场景搜索筛选，收藏组件，复制安装命令和选型资料。">
+  <title>开源组件工具集 · PromptCode</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/toolkit.css">
+  <script type="module" src="/toolkit.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到组件工具集</a>
+  <aside class="sidebar" aria-label="主导航">
+    <a class="brand" href="/" aria-label="PromptCode 首页"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span>PromptCode<small>让开发更顺手</small></span></a>
+    <div class="nav-label">我的工作台</div>
+    <nav class="category-nav" aria-label="工作台导航">
+      <a class="nav-item" href="/"><span class="nav-symbol" aria-hidden="true">▦</span><span>提示词库</span></a>
+      <a class="nav-item" href="/motion.html"><span class="nav-symbol" aria-hidden="true">✳</span><span>动效词典</span></a>
+      <a class="nav-item active" href="/toolkit.html" aria-current="page"><span class="nav-symbol" aria-hidden="true">◈</span><span>组件工具集</span><span class="nav-count">NEW</span></a>
+    </nav>
+    <div class="sidebar-note"><span class="note-icon" aria-hidden="true">◈</span><strong>先选对，再动手</strong><p>找到适合项目的组件，把用途、安装方式与选型边界一起带给 AI 开发搭档。</p><button class="text-button" id="about-button">查看收录与核查方式 ↗</button></div>
+    <div class="sidebar-bottom"><span class="status-dot"></span><span id="storage-status">收藏保存在当前浏览器</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><div class="breadcrumb"><a href="/">工作台</a><span>/</span><strong>开源组件工具集</strong></div><button class="subtle-button" id="export-tools" disabled>↓ 导出筛选结果</button></header>
+    <main id="main" tabindex="-1">
+      <section class="toolkit-hero" aria-labelledby="page-title">
+        <div><div class="eyebrow"><span></span> BUILD WITH THE RIGHT TOOLS</div><h1 id="page-title">好组件，随手就能找到<span>。</span></h1><p>从腾讯、字节、阿里系，到全球开源社区。<br>把 Web UI、Flutter 组件和常用包，放进同一个工具箱。</p><div class="toolkit-meta"><span class="status-dot"></span><span id="snapshot-date">正在读取组件目录…</span><span>官方入口 · 原创选型说明</span></div></div>
+        <div class="toolkit-art" aria-hidden="true"><div class="art-heading"><span>YOUR NEXT STACK</span><i>↗</i></div><div class="art-row"><b class="art-icon web-icon">W</b><span>Web UI<small>从界面开始</small></span><em>React / Vue</em></div><div class="art-row"><b class="art-icon flutter-icon">F</b><span>Flutter UI<small>为体验选组件</small></span><em>Flutter</em></div><div class="art-row"><b class="art-icon package-icon">P</b><span>pub.dev<small>为功能找工具</small></span><em>Dart</em></div></div>
+      </section>
+      <section class="toolkit-recipes" aria-labelledby="recipes-title"><div class="recipes-heading"><h2 id="recipes-title">从一个场景开始</h2><span>精选组合，少走一点弯路</span></div><div id="recipe-list" class="recipe-list"></div><p id="recipe-note" class="recipe-note" hidden></p></section>
+      <section class="toolkit-library" aria-labelledby="library-title">
+        <h2 id="library-title" class="sr-only">开源组件目录</h2>
+        <div id="kind-filters" class="toolkit-tabs" role="group" aria-label="资源类型"><button data-kind="all" aria-pressed="true">全部资源 <span>—</span></button><button data-kind="web" aria-pressed="false">Web UI <span>—</span></button><button data-kind="flutter" aria-pressed="false">Flutter UI <span>—</span></button><button data-kind="package" aria-pressed="false">Flutter 常用包 <span>—</span></button><button data-kind="favorites" aria-pressed="false">☆ 我的收藏 <span>0</span></button></div>
+        <div class="search-row toolkit-search"><span aria-hidden="true">⌕</span><input id="toolkit-search" type="search" aria-label="搜索组件、包名或用途" placeholder="搜索组件、包名或用途，例如：腾讯、Web3、路由、dio…" autocomplete="off"><kbd>⌘ K</kbd></div>
+        <div class="toolkit-filters"><label class="filter-label" for="toolkit-origin">来源<select class="filter-select" id="toolkit-origin" aria-label="来源"><option value="all">全部来源</option></select></label><label class="filter-label" for="toolkit-category">用途<select class="filter-select" id="toolkit-category" aria-label="用途"><option value="all">全部用途</option></select></label><label class="filter-label" for="toolkit-framework">技术栈<select class="filter-select" id="toolkit-framework" aria-label="技术栈"><option value="all">全部技术栈</option></select></label><label class="historical-toggle"><input id="include-historical" type="checkbox">包含历史参考</label></div>
+        <div class="toolkit-results"><span id="toolkit-count" role="status" aria-live="polite">正在载入…</span><button class="text-button" id="clear-filters">重置筛选</button></div>
+        <div id="toolkit-grid" class="toolkit-grid" aria-busy="true"><p class="loading-state">正在准备你的工具箱…</p></div>
+        <div id="toolkit-empty" class="empty-state" hidden><span aria-hidden="true">⌕</span><h3>还没有匹配的资源</h3><p>试试包名或更宽泛的用途，也可以清除筛选。</p><button id="empty-reset" class="secondary-button">查看全部资源</button></div>
+        <div class="load-more-row"><button id="load-more" class="secondary-button" hidden>显示更多资源</button></div>
+        <noscript><p>启用 JavaScript 后可以搜索、筛选和收藏。也可查看 <a href="/data/toolkit-library.json">完整 JSON 目录</a>。</p></noscript>
+      </section>
+      <footer class="page-footer"><span>为下一次开发备好工具 <span aria-hidden="true">◈</span></span><span>版本为采集快照 · 兼容性与许可请核对官方发布物</span></footer>
+    </main>
+  </div>
+  <dialog id="tool-detail" class="tool-detail" aria-labelledby="detail-title"><div class="editor-header"><div><div id="detail-eyebrow" class="editor-eyebrow"></div><h2 id="detail-title"></h2></div><button class="icon-button" data-close="tool-detail" aria-label="关闭组件详情">×</button></div><div id="detail-content" class="detail-content"></div><div class="detail-actions"><button class="secondary-button" data-close="tool-detail">关闭</button><button id="detail-copy" class="primary-button">复制选型信息</button></div></dialog>
+  <dialog id="toolkit-about" class="tool-detail" aria-labelledby="about-title"><div class="editor-header"><h2 id="about-title">收录与核查方式</h2><button class="icon-button" data-close="toolkit-about" aria-label="关闭收录说明">×</button></div><div class="detail-content"><p>这是人工筛选、按场景整理的开源资源导航。腾讯、字节、阿里系的身份以项目官方组织为依据；国外生态和社区移植单独注明维护者。</p><p>版本、SDK 约束和许可证快照来自 npm / pub.dev 官方注册表。Flutter 平台标签来自 pub.dev 分析；未返回标签不代表不支持。目录没有逐一安装或编译第三方包。</p><p>默认隐藏已归档、暂停或停止维护的资源。超过两年未发布的 pub 包提示「发布较早」，这不等于已停止维护。历史示例不会提供快捷安装。</p><p>每项的「适合」「注意」是编辑判断。开源 SDK 与其对接的云服务、商业扩展、地图瓦片或附带字体可能有不同许可和费用。</p><p>收藏仅保存在当前浏览器。筛选条件保留在当前页面 URL，可复制地址分享；导出内容为当前筛选到的全部资源 JSON。</p><p>Flutter 自带的 <a href="https://docs.flutter.dev/ui/widgets" target="_blank" rel="noopener noreferrer">Material / Cupertino 组件</a> 也应优先评估，无需添加第三方包。</p></div><div class="detail-actions"><button class="primary-button" data-close="toolkit-about">知道了</button></div></dialog>
+  <dialog id="toolkit-copy-dialog" class="manual-copy-dialog" aria-labelledby="toolkit-copy-title"><div class="editor-header"><h2 id="toolkit-copy-title">手动复制</h2><button class="icon-button" data-close="toolkit-copy-dialog" aria-label="关闭手动复制">×</button></div><div class="manual-content"><p>剪贴板不可用，请全选后按 Cmd/Ctrl + C。</p><textarea id="toolkit-copy-text" readonly aria-label="待复制的选型信息"></textarea><button id="toolkit-copy-select" class="primary-button">全选内容</button></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden><span aria-hidden="true">✓</span><span id="toast-text"></span></div>
+</body>
+</html>

@@ -17,3 +17,7 @@
 ## 分发与构建
 
 `npm ci`安装锁定依赖；`scripts/sync-motion-assets.mjs`校验版本并复制资源及许可标识；静态构建包含这些必要文件。生成的 `web/vendor/` 与 `dist/` 不提交Git，由构建重建。
+
+## 组件工具集收录说明
+
+`data/toolkit-library.json` 与 `docs/toolkit-guide.md` 是人工整理的项目介绍、选型说明和官方注册表元数据快照，仅链接第三方项目，没有将其 UI 实现、图片、商标图形或源码捆绑到站点。各项目名称、商标及第三方实现属于其权利人；实际使用需核对具体版本的 LICENSE、NOTICE、字体和商业扩展条款。Forui 的许可快照同时记录 MIT 与 OFL-1.1。包版本、许可标签不构成兼容或授权保证。

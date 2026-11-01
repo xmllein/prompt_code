@@ -3,17 +3,19 @@
   "version": "2.1.0",
   "private": true,
   "type": "module",
-  "description": "54个中文前后端开发提示词：搜索、填写、预览和一键复制。",
+  "description": "中文开发提示词、动效词典与 Web / Flutter 开源组件工具集。",
   "engines": {
     "node": "22.x"
   },
   "scripts": {
     "dev": "node scripts/sync-motion-assets.mjs && python3 scripts/serve.py",
-    "check": "node scripts/check.mjs && node --check web/app.js && node --check web/prompt-utils.js && node --check web/motion.js && node --check web/motion-engine.js && node --check web/motion-utils.js",
+    "check": "node scripts/check.mjs && node --check web/app.js && node --check web/prompt-utils.js && node --check web/motion.js && node --check web/motion-engine.js && node --check web/motion-utils.js && node --check web/toolkit.js && node --check web/toolkit-utils.js && node --check scripts/refresh-toolkit.mjs",
     "test": "node --test tests/*.test.mjs",
     "build": "npm run check && npm test && node scripts/build.mjs",
     "preview": "python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
-    "docs:motion": "node scripts/export-motion.mjs"
+    "docs:motion": "node scripts/export-motion.mjs",
+    "docs:toolkit": "node scripts/export-toolkit.mjs",
+    "refresh:toolkit": "node scripts/refresh-toolkit.mjs && node scripts/export-toolkit.mjs"
   },
   "dependencies": {
     "animate.css": "4.1.1",

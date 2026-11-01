@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { composePrompt, getPlaceholders } from '../web/prompt-utils.js';
 import { validateMotionCatalog } from './check-motion.mjs';
+import { validateToolkitCatalog } from './check-toolkit.mjs';
 
 export const root = fileURLToPath(new URL('../', import.meta.url));
 
@@ -46,6 +47,7 @@ export async function validateProject() {
     }
   }
   await validateMotionCatalog();
+  await validateToolkitCatalog();
   return library;
 }
 

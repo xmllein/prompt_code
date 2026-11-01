@@ -42,6 +42,26 @@ python3 scripts/serve.py --port 9000
 
 [动效词典文档](docs/motion-guide.md)与页面共用 `data/motion-library.json`。修改数据后运行 `npm run docs:motion`。Animate.css固定npm4.1.1的MIT发布物；GSAP3.15.0使用专用标准许可，不是MIT，详情见[第三方说明](THIRD_PARTY_NOTICES.md)和[来源核查](research/motion-sources.md)。
 
+## 开源组件工具集
+
+从侧栏打开「组件工具集」，页面路径为 `/toolkit.html`。收录 **94 项**资源：**27 个 Web UI、13 个 Flutter UI / 专项组件及历史参考、54 个 Flutter 常用包**，包括用户指定的 Ant Design Web3、TDesign Flutter 和 Fluro。
+
+支持中英文包名与用途搜索、来源 / 技术栈 / 用途组合筛选、四组场景入口、浏览器收藏、安装命令复制、选型资料复制、筛选结果 JSON 导出。详情附官方文档、源码、npm / pub.dev 元数据、版本与许可快照。默认隐藏 4 个停止维护、归档或暂停维护的条目；发布较早但未明确停用的包（如 Fluro）保留并提示核对。
+
+Flutter 常用包覆盖路由、状态管理、依赖注入、网络、数据模型、存储、文件、媒体、图表、表单、国际化、权限、定位、分享、通知、后台任务、WebView、扫码、地图、测试、监控和布局。Flutter 自带 Material / Cupertino 组件也在说明中提供官方入口。
+
+「React 企业后台」展示备选设计体系，不建议全部混装；字节 ScrollKit 是已归档的滚动专项库，阿里 FlutterGo 是暂停维护的学习 App，不冒充完整、持续维护的 Flutter UI 库。Flutter 的 Fluent UI / macOS UI 是社区实现，分别与微软 / Apple 官方库区分。
+
+唯一数据源为 [data/toolkit-library.json](data/toolkit-library.json)，可阅读生成的 [组件工具集文档](docs/toolkit-guide.md)。[Flutter UI 来源核查](research/flutter-ui-sources.md)记录企业归属、许可和历史项目边界；[工具集来源与维护说明](research/toolkit-sources.md)记录 Web UI 与通用包核查方式。
+
+```bash
+npm run docs:toolkit       # 人工编辑目录后同步 Markdown
+npm run refresh:toolkit    # 主动采集官方注册表元数据，再同步文档
+npm run build             # 校验、测试并生成静态站点
+```
+
+元数据刷新不会安装或执行所收录的包；采集失败保留原快照并标注错误。注册表版本来自 npm `latest` / pub.dev `latest`，不保证均为稳定版或适配当前项目。包内字体、商业扩展与云服务可能另有许可 / 费用。没有逐一安装或编译这些第三方组件，选型仍应根据目标 SDK 和平台验证。收藏按浏览器及访问地址分别保存；筛选条件写入 URL，不会自动上传。
+
 ## 模板内容
 
 | 分类 | 数量 | 文档与主要场景 |

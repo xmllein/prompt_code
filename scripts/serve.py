@@ -21,7 +21,7 @@ class PromptHandler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         path = urlsplit(self.path).path
-        data_files = {'/data/prompt-library.json': 'prompt-library.json', '/data/motion-library.json': 'motion-library.json'}
+        data_files = {'/data/prompt-library.json': 'prompt-library.json', '/data/motion-library.json': 'motion-library.json', '/data/toolkit-library.json': 'toolkit-library.json'}
         if path in data_files:
             try:
                 content = (ROOT / 'data' / data_files[path]).read_bytes()
