@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fa">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <title>动效词典 · PromptCode</title>
+  <meta name="description" content="看懂Animate.css与GSAP：动效预览、中文术语、适用场景与可复制的动效提示词。">
+  <link rel="stylesheet" href="/vendor/animate.min.css"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/motion.css">
+  <script type="module" src="/motion.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到动效词典</a>
+  <aside class="sidebar" aria-label="主导航">
+    <a class="brand" href="/" aria-label="PromptCode 首页"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span>PromptCode<small>让开发更顺手</small></span></a>
+    <div class="nav-label">我的工作台</div>
+    <nav class="category-nav" aria-label="工作台导航">
+      <a class="nav-item motion-nav-link" href="/"><span aria-hidden="true">▦</span><span>提示词库</span></a>
+      <a class="nav-item motion-nav-link active" href="/motion.html" aria-current="page"><span aria-hidden="true">✳</span><span>动效词典</span><span class="nav-count">NEW</span></a>
+      <div class="nav-divider"></div>
+      <a class="nav-item motion-nav-link" href="https://animate.style/" target="_blank" rel="noopener noreferrer">Animate.css <span aria-hidden="true">↗</span></a>
+      <a class="nav-item motion-nav-link" href="https://gsap.com/docs/v3/" target="_blank" rel="noopener noreferrer">GSAP 文档 <span aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="sidebar-note"><span class="note-icon" aria-hidden="true">✳</span><strong>先看动作，再描述需求</strong><p>选择场景，点击播放。找到合适的节奏后，把中文描述复制给 AI 开发搭档。</p><a class="text-button" href="/">搭配开发提示词使用 ↗</a></div>
+    <div class="sidebar-bottom"><span class="status-dot"></span>按需播放 · 不自动循环</div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><div class="breadcrumb"><a href="/">工作台</a><span>/</span><strong>动效词典</strong></div><a class="subtle-button" href="/">← 返回提示词库</a></header>
+    <main id="main" tabindex="-1">
+      <section class="motion-hero"><div><div class="eyebrow"><span></span> MOTION, EXPLAINED</div><h1>看得见，才说得清<span>。</span></h1><p>渐显、交错、回弹、滚动联动……<br>看懂动作的名字，把“自然一点”变成清晰的开发要求。</p></div><div class="motion-hero-stat"><strong id="effect-total">—</strong><span>种动效与概念演示</span><small><span id="term-total">—</span> 个术语，附中文解释与场景</small></div></section>
+      <div class="library-intro"><div><span class="library-mark animate-mark">A</span><div><strong>Animate.css</strong><p>选现成效果 <span>·</span> 准确类名 + 入场 / 离场 / 强调</p></div><span id="animate-count" class="intro-count">—</span></div><div><span class="library-mark gsap-mark">G</span><div><strong>GSAP</strong><p>组合动作逻辑 <span>·</span> API + 时序 + 缓动 + 滚动</p></div><span id="gsap-count" class="intro-count">—</span></div></div>
+      <div class="concept-note"><strong>名字相近，动作不同</strong><span><code>flip</code> 是三维翻牌；<code>Flip</code> 是布局过渡。<code>ScrollTrigger</code> 触发、<code>scrub</code> 联动、<code>pin</code> 固定也各有用途。</span></div>
+      <div class="motion-toolbar"><div class="view-tabs" role="tablist" aria-label="词典视图"><button id="tab-featured" role="tab" data-view="featured" aria-selected="true" aria-controls="effects-panel">常用推荐</button><button id="tab-all" role="tab" data-view="all" aria-selected="false" aria-controls="effects-panel" tabindex="-1">全部演示</button><button id="tab-terms" role="tab" data-view="terms" aria-selected="false" aria-controls="terms-panel" tabindex="-1">术语速查</button></div><button id="stop-all" class="secondary-button" disabled>停止并复位</button></div>
+      <div class="search-row motion-search"><span aria-hidden="true">⌕</span><input id="motion-search" type="search" aria-label="搜索动效或术语" placeholder="搜索中文或英文，例如：淡入、fadeIn、stagger、滚动…" autocomplete="off"><span id="motion-result-count" role="status" aria-live="polite">正在载入…</span></div>
+      <div id="effect-filters" class="effect-filters"><div class="library-switch" role="group" aria-label="动效库"><button data-library="all" aria-pressed="true">全部</button><button data-library="animate" aria-pressed="false">Animate.css</button><button data-library="gsap" aria-pressed="false">GSAP</button></div><label class="motion-group-label">分类<select id="motion-group"><option value="all">全部分类</option></select></label><label class="duration-label" for="motion-duration">演示时长<input id="motion-duration" type="range" min="300" max="1800" step="50" value="800"><output id="duration-value" for="motion-duration">800ms</output></label></div>
+      <div class="motion-preference"><span id="motion-status" role="status" aria-live="polite">默认静止。点击播放，最多同时运行一个示例。</span><span id="reduce-status"></span></div>
+      <section id="effects-panel" role="tabpanel" aria-labelledby="tab-featured"><div id="effects-grid" class="effects-grid" aria-busy="true"><p class="loading-state">正在准备动效词典…</p></div></section>
+      <section id="terms-panel" role="tabpanel" aria-labelledby="tab-terms" hidden><div id="terms-grid" class="terms-grid"></div></section>
+      <div id="motion-empty" class="empty-state" hidden><h3>没有找到匹配的内容</h3><p>试试英文名称、中文动作或清除筛选。</p><button id="motion-reset" class="secondary-button">查看全部演示</button></div>
+      <noscript><p>启用JavaScript后可以播放演示与复制；也可以阅读仓库中的动效词典文档。</p></noscript>
+      <footer class="page-footer"><span>让动作服务于体验 <span aria-hidden="true">✳</span></span><span>固定版本 · 中文说明为原创教学设计 · <a href="/vendor/animate.LICENSE.txt" target="_blank" rel="noopener noreferrer">Animate 许可</a> · <a href="/vendor/GSAP-NOTICE.txt" target="_blank" rel="noopener noreferrer">GSAP 许可</a></span></footer>
+    </main>
+  </div>
+  <dialog id="motion-copy-dialog" class="manual-copy-dialog" aria-labelledby="motion-copy-title"><div class="editor-header"><h2 id="motion-copy-title">手动复制</h2><button id="motion-copy-close" class="icon-button" aria-label="关闭手动复制">×</button></div><div class="manual-content"><p>剪贴板访问不可用，请全选后按 Cmd/Ctrl + C。</p><textarea id="motion-copy-text" readonly aria-label="待复制内容"></textarea><button id="motion-copy-select" class="primary-button">全选内容</button></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden><span aria-hidden="true">✓</span><span id="toast-text"></span></div>
+</body>
+</html>

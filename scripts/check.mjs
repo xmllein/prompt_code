@@ -3,6 +3,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { composePrompt, getPlaceholders } from '../web/prompt-utils.js';
+import { validateMotionCatalog } from './check-motion.mjs';
 
 export const root = fileURLToPath(new URL('../', import.meta.url));
 
@@ -35,8 +36,8 @@ export async function validateProject() {
     assert.deepEqual(blocks, prompts.map(p => composePrompt(library, p)), `${category} 文档与JSON不同步，请运行 python3 scripts/export_prompts.py`);
   }
   // Local documentation links should survive a fresh clone, not just this workspace.
-  const docs = ['README.md'];
-  for (const folder of ['prompts', 'research']) for (const file of await readdir(path.join(root, folder))) if (file.endsWith('.md')) docs.push(`${folder}/${file}`);
+  const docs = ['README.md', 'THIRD_PARTY_NOTICES.md'];
+  for (const folder of ['prompts', 'research', 'docs']) for (const file of await readdir(path.join(root, folder))) if (file.endsWith('.md')) docs.push(`${folder}/${file}`);
   for (const doc of docs) {
     const text = await readFile(path.join(root, doc), 'utf8');
     for (const [, link] of text.matchAll(/\]\(([^)]+)\)/g)) {
@@ -44,6 +45,7 @@ export async function validateProject() {
       await readFile(path.resolve(root, path.dirname(doc), link.split('#')[0]));
     }
   }
+  await validateMotionCatalog();
   return library;
 }
 

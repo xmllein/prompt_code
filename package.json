@@ -1,15 +1,22 @@
 {
   "name": "prompt-code",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "type": "module",
   "description": "54个中文前后端开发提示词：搜索、填写、预览和一键复制。",
-  "engines": {"node": "22.x"},
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
-    "dev": "python3 scripts/serve.py",
-    "check": "node scripts/check.mjs && node --check web/app.js && node --check web/prompt-utils.js",
+    "dev": "node scripts/sync-motion-assets.mjs && python3 scripts/serve.py",
+    "check": "node scripts/check.mjs && node --check web/app.js && node --check web/prompt-utils.js && node --check web/motion.js && node --check web/motion-engine.js && node --check web/motion-utils.js",
     "test": "node --test tests/*.test.mjs",
     "build": "npm run check && npm test && node scripts/build.mjs",
-    "preview": "python3 -m http.server 4173 --bind 127.0.0.1 --directory dist"
+    "preview": "python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
+    "docs:motion": "node scripts/export-motion.mjs"
+  },
+  "dependencies": {
+    "animate.css": "4.1.1",
+    "gsap": "3.15.0"
   }
 }

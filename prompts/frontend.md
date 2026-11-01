@@ -173,9 +173,11 @@
 6. 支持 prefers-reduced-motion，保留必要状态反馈并缩减非必要位移或缩放。不要永久给大量元素设置 will-change。
 
 验收：普通操作、快速反复操作和减少动态效果模式均可用；用性能录制检查实际掉帧、长任务与布局开销，不将合成动画等同于零成本。
+
+术语参考：Animate.css的fadeInUp等是CSS预设；GSAP的Timeline、stagger、ease、ScrollTrigger是可组合概念或API。Animate.css flip是三维翻牌，GSAP Flip是布局过渡。选择时写明对象、触发、端点和目的，不只给一个动效名。参考 https://animate.style/ 与 https://gsap.com/docs/v3/ 。
 ```
 
-相关工程依据（模板为原创整理，非来源全文）：[web.dev：How to create high-performance CSS animations](https://web.dev/articles/animations-guide)；[W3C：Web Content Accessibility Guidelines 2.2](https://www.w3.org/TR/WCAG22/)。
+相关工程依据（模板为原创整理，非来源全文）：[web.dev：How to create high-performance CSS animations](https://web.dev/articles/animations-guide)；[W3C：Web Content Accessibility Guidelines 2.2](https://www.w3.org/TR/WCAG22/)；[Animate.css：预设动效与无障碍](https://animate.style/)；[GSAP：动画核心与插件文档](https://gsap.com/docs/v3/)。
 
 ## F06 · 消除闪烁、抖动和布局跳变
 

@@ -216,7 +216,7 @@ function renderGrid() {
   $('#empty-state').hidden = prompts.length > 0;
   $('#empty-description').textContent = state.category === 'favorites' && !state.favorites.size ? '点击提示词卡片右上角的星标，把常用场景放在这里。' : '试试其他关键词，或清除筛选。';
   $('#section-title').textContent = state.category === 'all' ? '全部提示词' : state.category === 'favorites' ? '我的收藏' : CATEGORIES[state.category].label;
-  $$('.nav-item').forEach(button => {
+  $$('.nav-item[data-category]').forEach(button => {
     const active = button.dataset.category === state.category;
     button.classList.toggle('active', active);
     if (active) button.setAttribute('aria-current', 'page'); else button.removeAttribute('aria-current');
@@ -315,7 +315,7 @@ function renderSources() {
 }
 
 function bindEvents() {
-  $$('.nav-item').forEach(button => button.addEventListener('click', () => {
+  $$('.nav-item[data-category]').forEach(button => button.addEventListener('click', () => {
     state.category = button.dataset.category;
     renderGrid();
   }));

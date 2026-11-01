@@ -25,6 +25,8 @@
       <button class="nav-item" data-category="common"><span data-icon="workflow"></span><span>通用协作</span><span class="nav-count" data-count="common">—</span></button>
       <div class="nav-divider"></div>
       <button class="nav-item" data-category="favorites"><span data-icon="star"></span><span>我的收藏</span><span class="nav-count" data-count="favorites">0</span></button>
+      <div class="nav-divider"></div>
+      <a class="nav-item motion-link" href="/motion.html"><span data-icon="sparkles"></span><span>动效词典</span><span class="nav-count">NEW</span></a>
     </nav>
     <div class="sidebar-note">
       <span class="note-icon" data-icon="sparkles"></span>
@@ -63,6 +65,7 @@
         <div class="section-heading"><div><h2 id="section-title">全部提示词</h2><span id="result-count" role="status" aria-live="polite">正在载入…</span></div><label class="mode-filter-label" for="mode-filter">任务模式 <select id="mode-filter"><option value="all">全部模式</option><option value="implementation">直接实施</option><option value="analysis">分析设计</option></select></label></div>
         <div class="search-row"><span data-icon="search"></span><input id="search" type="search" placeholder="搜索场景、关键词，例如：动效、缓存、性能…" aria-label="搜索提示词" autocomplete="off"><kbd id="search-shortcut">⌘ K</kbd></div>
         <div id="quick-tags" class="quick-tags" aria-label="常用关键词"><span>常用场景</span><button data-query="UI">UI 设计</button><button data-query="动效">自然动效</button><button data-query="闪烁">防闪烁</button><button data-query="性能">性能优化</button><button data-query="表格">复杂表格</button><button data-query="自动保存">表单草稿</button><button data-query="上传">文件上传</button><button data-query="Webhook">Webhook</button><button data-query="导入">导入导出</button><button data-query="缓存">缓存设计</button><button data-query="调度">任务调度</button></div>
+        <a class="motion-discovery" href="/motion.html">✳ 不确定动效怎么描述？看演示、查术语，再复制动效要求 <span aria-hidden="true">→</span></a>
         <div id="prompt-grid" class="prompt-grid" aria-busy="true"><div class="loading-state"><span data-icon="code"></span><p>正在准备你的提示词库…</p></div></div>
         <div id="empty-state" class="empty-state" hidden><span data-icon="search"></span><h3>没有找到匹配的提示词</h3><p id="empty-description">试试其他关键词，或清除筛选。</p><button id="reset-filters" class="secondary-button">查看全部提示词</button></div>
       </section>

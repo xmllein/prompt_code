@@ -2,14 +2,15 @@
 
 **54 个中文开发场景：通用协作 6 个、前端 24 个、后端 24 个。** 搜索场景，补充项目背景与任务信息，预览后把完整提示词复制给 ChatGPT、Claude Code 等 AI 开发搭档。
 
-纯静态网页，无运行时依赖、不调用模型接口、不需要账号或数据库。项目背景、收藏、工作模式和填写内容保存在当前浏览器。浏览器不会把填写内容发送给本项目服务或模型；复制后的内容由用户决定如何使用。
+纯静态网页，不调用模型接口、不需要账号或数据库。动效词典使用锁定版本的Animate.css与GSAP，并随站点自托管必要资源。项目背景、收藏、工作模式和填写内容保存在当前浏览器。浏览器不会把填写内容发送给本项目服务或模型；复制后的内容由用户决定如何使用。
 
 ## 快速开始
 
-本地开发只需 Python 3：
+首次使用先准备依赖与动效资源（Node.js 22、npm、Python 3）：
 
 ```bash
-python3 scripts/serve.py
+npm ci
+npm run dev
 ```
 
 默认打开 [http://127.0.0.1:8765](http://127.0.0.1:8765)。服务只监听本机；端口占用时尝试后续 9 个端口，以终端打印的地址为准。按 `Ctrl+C` 停止。指定端口：
@@ -18,7 +19,7 @@ python3 scripts/serve.py
 python3 scripts/serve.py --port 9000
 ```
 
-也可以在安装 Node.js 22 后运行 `npm run dev`。
+依赖安装后，`npm run dev`准备动效资源并启动本地服务；也可以先运行 `node scripts/sync-motion-assets.mjs`，再运行 `python3 scripts/serve.py`。
 
 ## 网页使用
 
@@ -32,6 +33,14 @@ python3 scripts/serve.py --port 9000
 `Cmd/Ctrl + K` 聚焦搜索。剪贴板 API 不可用时尝试选择复制，再提供手动全选入口。
 
 本地设置以浏览器和访问地址为边界：更换浏览器、域名、端口，或清理浏览器数据后不会自动迁移。不要在共同背景中填写密钥等敏感内容。
+
+## 动效词典
+
+打开 [本地动效词典](http://127.0.0.1:8765/motion.html)，或从侧栏进入。包含 **97个Animate.css预设、16个GSAP概念演示、24个术语/对比条目**。每项展示准确英文名、中文解释、适用场景、注意点、示意代码，并可一键复制成动效要求。
+
+默认静止、最多同时播放一个示例；支持停止复位与系统减少动态效果。ScrollTrigger、scrub、pin在卡片局部滚动区实际运行；GSAP Flip与Animate.css三维flip分别说明。时长滑块用于教学观察，不代表产品标准时长。
+
+[动效词典文档](docs/motion-guide.md)与页面共用 `data/motion-library.json`。修改数据后运行 `npm run docs:motion`。Animate.css固定npm4.1.1的MIT发布物；GSAP3.15.0使用专用标准许可，不是MIT，详情见[第三方说明](THIRD_PARTY_NOTICES.md)和[来源核查](research/motion-sources.md)。
 
 ## 模板内容
 
@@ -49,7 +58,7 @@ python3 scripts/serve.py --port 9000
 
 ## 构建与检查
 
-部署构建只需要 Node.js 22 和 npm，无第三方 npm 依赖，也无需 Python：
+部署构建只需要 Node.js 22 和 npm，无需 Python；`npm ci`按lockfile安装两个动效依赖：
 
 ```bash
 npm ci
@@ -64,7 +73,10 @@ dist/
   styles.css
   app.js
   prompt-utils.js
+  motion.html / motion.js / motion.css / motion-engine.js / motion-utils.js
+  vendor/  # 固定动效资源与许可标识
   data/prompt-library.json
+  data/motion-library.json
 ```
 
 静态产物可以单独托管，浏览器直接读取 JSON，不依赖本地 `/health` 或 Python API。
@@ -135,9 +147,10 @@ npm run build
 web/          页面、样式、交互与可测试的合成/搜索函数
 data/         唯一模板数据源
 prompts/      从数据生成的完整 Markdown 模板
-scripts/      本地服务、静态构建、数据检查与命令行复制
+scripts/      本地服务、静态构建、资源同步、文档生成与数据检查
 tests/        搜索、筛选、字段替换与兼容性测试
 research/     来源核查和扩展分析的历史记录
+docs/         与网页共用数据生成的动效词典
 artifacts/    本地验收图（不提交Git）
 vercel.json   Vercel 静态部署配置
 ```
@@ -154,6 +167,6 @@ vercel.json   Vercel 静态部署配置
 
 ## 验证范围
 
-自动检查覆盖54个模板的ID/分类/关联/来源、占位符、Markdown与JSON一致性、文档本地链接；7个内置测试覆盖完整合成、特殊字符、多行与重复占位、旧填写兼容、模式校验、搜索相关性和组合筛选。
+自动检查覆盖54个模板的ID/分类/关联/来源、占位符、Markdown与JSON一致性、文档本地链接；内置测试覆盖完整合成、特殊字符、多行与重复占位、旧填写兼容、模式校验、搜索相关性和组合筛选。
 
-纯静态构建产物已在浏览器验证54个卡片、前后端各24个场景、Webhook搜索与完整复制、项目背景/占位字段合成、模式切换、收藏及刷新保存、11个仓库与27项资料入口；运行日志未见页面错误。手机宽度、实际Vercel托管及所有浏览器兼容性未在本次环境完成实测。
+提示词工作台已验证54个卡片、前后端各24个场景、搜索与完整复制、字段合成、模式切换、收藏及刷新保存。动效词典已验证CSS预设和GSAP实际播放、交错、连续操作接管、播放头、布局Flip、局部滚动联动、pin占位回收及术语搜索。手机宽度、真实系统偏好切换、实际Vercel托管及所有浏览器兼容性未在本次环境完成实测。

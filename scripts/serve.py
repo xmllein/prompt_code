@@ -21,9 +21,10 @@ class PromptHandler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         path = urlsplit(self.path).path
-        if path == '/data/prompt-library.json':
+        data_files = {'/data/prompt-library.json': 'prompt-library.json', '/data/motion-library.json': 'motion-library.json'}
+        if path in data_files:
             try:
-                content = (ROOT / 'data/prompt-library.json').read_bytes()
+                content = (ROOT / 'data' / data_files[path]).read_bytes()
             except OSError:
                 self.send_error(503, 'Prompt library unavailable')
                 return
