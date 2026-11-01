@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fa">
+  <meta name="description" content="54个中文前后端开发场景：搜索提示词、填写项目背景、预览并一键复制给AI开发搭档。">
+  <title>PromptCode · 开发提示词工作台</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%231d2633'/%3E%3Cpath d='m16 12-8 8 8 8m8-16 8 8-8 8' fill='none' stroke='%23ffb79b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到提示词列表</a>
+  <aside class="sidebar" aria-label="主导航">
+    <a class="brand" href="/" aria-label="PromptCode 首页">
+      <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+      <span>PromptCode<small>让开发更顺手</small></span>
+    </a>
+    <div class="nav-label">我的工作台</div>
+    <nav id="category-nav" class="category-nav" aria-label="提示词分类">
+      <button class="nav-item active" data-category="all" aria-current="page"><span data-icon="grid"></span><span>全部提示词</span><span class="nav-count" data-count="all">—</span></button>
+      <button class="nav-item" data-category="frontend"><span data-icon="layout"></span><span>前端开发</span><span class="nav-count" data-count="frontend">—</span></button>
+      <button class="nav-item" data-category="backend"><span data-icon="server"></span><span>后端开发</span><span class="nav-count" data-count="backend">—</span></button>
+      <button class="nav-item" data-category="common"><span data-icon="workflow"></span><span>通用协作</span><span class="nav-count" data-count="common">—</span></button>
+      <div class="nav-divider"></div>
+      <button class="nav-item" data-category="favorites"><span data-icon="star"></span><span>我的收藏</span><span class="nav-count" data-count="favorites">0</span></button>
+    </nav>
+    <div class="sidebar-note">
+      <span class="note-icon" data-icon="sparkles"></span>
+      <strong>把上下文带上</strong>
+      <p>补充项目背景，复制时自动加入。每次提问，都更贴近你的项目。</p>
+      <button id="context-shortcut" class="text-button">设置项目背景 <span aria-hidden="true">↗</span></button>
+    </div>
+    <div class="sidebar-bottom"><span class="status-dot"></span><span id="runtime-status">浏览器本地保存</span><span class="version">v2.0.0</span></div>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar">
+      <div class="breadcrumb">工作台 <span>/</span> <strong>提示词库</strong></div>
+      <button class="subtle-button" id="sources-button"><span data-icon="book"></span>参考来源</button>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span> YOUR DEVELOPMENT COMPANION</div>
+          <h1 id="page-title">好代码，从好提示词开始<span>。</span></h1>
+          <p>把常用的开发要求，变成随手可用的提示词。<br class="desktop-break">选一个场景，补充上下文，复制给你的 AI 开发搭档。</p>
+          <div class="hero-meta"><span><strong id="total-count">—</strong> 场景模板</span><i></i><span>前端 · 后端 · 协作</span><i></i><span>适用于 ChatGPT / Claude Code</span></div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="code-window"><div class="window-dots"><i></i><i></i><i></i><span>your-next-idea.prompt</span></div><div class="code-lines"><span class="code-comment">// 少一些重复，多一些创造</span><p><span class="code-purple">const</span> nextIdea = {</p><p>&nbsp; goal: <span class="code-green">"把想法变成现实"</span>,</p><p>&nbsp; context: <span class="code-green">"你的项目"</span>,</p><p>&nbsp; ready: <span class="code-orange">true</span></p><p>};<span class="code-cursor"></span></p></div><span class="window-label"><span data-icon="check"></span> 准备好开始了</span></div>
+          <span class="floating-symbol">✳</span>
+        </div>
+      </section>
+
+      <details class="context-panel" id="context-panel">
+        <summary><span class="context-icon" data-icon="sliders"></span><span><strong>项目背景</strong><small id="context-summary">填写一次，复制时自动带上</small></span><span class="context-label" id="context-label">未设置</span><span class="context-chevron" data-icon="chevron"></span></summary>
+        <div class="context-content"><label for="project-context">技术栈、项目目标、设计规范或其他共同要求</label><textarea id="project-context" rows="4" placeholder="例如：这是一个 React + TypeScript 管理后台，使用现有组件库。界面简洁克制，以蓝灰色为主，优先适配桌面与平板。"></textarea><div class="context-footer"><span id="storage-note">仅保存在当前浏览器，不会发送到其他服务。</span><button id="clear-context" class="text-button">清空背景</button></div></div>
+      </details>
+
+      <section class="library" aria-labelledby="section-title">
+        <div class="section-heading"><div><h2 id="section-title">全部提示词</h2><span id="result-count" role="status" aria-live="polite">正在载入…</span></div><label class="mode-filter-label" for="mode-filter">任务模式 <select id="mode-filter"><option value="all">全部模式</option><option value="implementation">直接实施</option><option value="analysis">分析设计</option></select></label></div>
+        <div class="search-row"><span data-icon="search"></span><input id="search" type="search" placeholder="搜索场景、关键词，例如：动效、缓存、性能…" aria-label="搜索提示词" autocomplete="off"><kbd id="search-shortcut">⌘ K</kbd></div>
+        <div id="quick-tags" class="quick-tags" aria-label="常用关键词"><span>常用场景</span><button data-query="UI">UI 设计</button><button data-query="动效">自然动效</button><button data-query="闪烁">防闪烁</button><button data-query="性能">性能优化</button><button data-query="表格">复杂表格</button><button data-query="自动保存">表单草稿</button><button data-query="上传">文件上传</button><button data-query="Webhook">Webhook</button><button data-query="导入">导入导出</button><button data-query="缓存">缓存设计</button><button data-query="调度">任务调度</button></div>
+        <div id="prompt-grid" class="prompt-grid" aria-busy="true"><div class="loading-state"><span data-icon="code"></span><p>正在准备你的提示词库…</p></div></div>
+        <div id="empty-state" class="empty-state" hidden><span data-icon="search"></span><h3>没有找到匹配的提示词</h3><p id="empty-description">试试其他关键词，或清除筛选。</p><button id="reset-filters" class="secondary-button">查看全部提示词</button></div>
+      </section>
+      <footer class="page-footer"><span>为专注开发而准备 <span aria-hidden="true">✳</span></span><span>浏览器保存 · 不调用模型接口 · 随用随复制</span></footer>
+    </main>
+  </div>
+
+  <dialog id="editor-dialog" class="editor-dialog" aria-labelledby="editor-title">
+    <div class="editor-header"><div><div id="editor-eyebrow" class="editor-eyebrow"></div><h2 id="editor-title"></h2></div><button class="icon-button close-dialog" aria-label="关闭提示词编辑器" data-close="editor-dialog"><span data-icon="close"></span></button></div>
+    <div class="editor-body">
+      <section class="editor-config" aria-label="填写上下文">
+        <div class="editor-section-label"><span class="step-number">1</span><h3>补充任务信息</h3></div>
+        <p class="config-hint">按需填写；留空的字段会保留占位文字。</p>
+        <div class="mode-picker"><span id="mode-label">工作模式</span><div role="group" aria-labelledby="mode-label"><button type="button" data-mode="implementation" aria-pressed="true">直接实施</button><button type="button" data-mode="analysis" aria-pressed="false">分析设计</button></div><p id="mode-description"></p></div>
+        <form id="placeholder-fields" class="placeholder-fields"></form>
+        <div class="editor-context-info"><span data-icon="sliders"></span><span id="editor-context-status"></span></div>
+        <button id="reset-draft" class="text-button reset-draft">重置本模板填写内容</button>
+      </section>
+      <section class="editor-preview" aria-labelledby="preview-heading"><div class="preview-heading"><div class="editor-section-label"><span class="step-number">2</span><h3 id="preview-heading">完整提示词预览</h3></div><span id="preview-count"></span></div><label class="sr-only" for="prompt-preview">将被复制的完整提示词</label><textarea id="prompt-preview" readonly spellcheck="false"></textarea><div id="preview-hint" class="preview-hint"></div><div id="related-prompts" class="related-prompts"></div></section>
+    </div>
+    <div class="editor-footer"><span><span data-icon="lock"></span>填写内容仅保存在当前浏览器</span><div><button class="secondary-button" data-close="editor-dialog">关闭</button><button id="editor-copy" class="primary-button"><span data-icon="copy"></span>复制完整提示词</button></div></div>
+  </dialog>
+
+  <dialog id="sources-dialog" class="sources-dialog" aria-labelledby="sources-title"><div class="editor-header"><div><div class="editor-eyebrow">CURATED RESOURCES</div><h2 id="sources-title">参考来源</h2></div><button class="icon-button" aria-label="关闭参考来源" data-close="sources-dialog"><span data-icon="close"></span></button></div><div class="sources-content"><p>模板结合工程实践原创整理。以下仓库用于研究分类、工作流程和检查方法，使用时仍需适配项目版本与约束。</p><div id="repo-list" class="repo-list"></div><h3>工程资料</h3><div id="source-list" class="source-list"></div><p class="source-date">资料核查日期：2026-11-01。性能目标与架构方案需要在实际项目中验证。</p></div></dialog>
+  <dialog id="manual-copy-dialog" class="manual-copy-dialog" aria-labelledby="manual-title"><div class="editor-header"><div><h2 id="manual-title">手动复制提示词</h2></div><button class="icon-button" aria-label="关闭手动复制" data-close="manual-copy-dialog"><span data-icon="close"></span></button></div><div class="manual-content"><p>浏览器未允许剪贴板访问。请选中下方内容，按 Ctrl/Cmd + C 复制。</p><textarea id="manual-copy-text" readonly aria-label="待复制的提示词"></textarea><button id="select-manual" class="primary-button">全选内容</button></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden><span data-icon="check"></span><span id="toast-text"></span></div>
+</body>
+</html>
