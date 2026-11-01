@@ -383,7 +383,7 @@ async function init() {
   refreshContext();
   bindEvents();
   try {
-    const response = await fetch('/data/prompt-library.json', { cache: 'no-cache' });
+    const response = await fetch('/data/prompt-library.json');
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const library = await response.json();
     if (!Array.isArray(library.prompts) || !library.modes || !library.sources || !Array.isArray(library.repositories)) throw new Error('模板数据格式错误');

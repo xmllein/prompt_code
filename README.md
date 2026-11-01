@@ -90,16 +90,19 @@ npm run build
 ```text
 dist/
   index.html
-  styles.css
-  app.js
-  prompt-utils.js
-  motion.html / motion.js / motion.css / motion-engine.js / motion-utils.js
-  vendor/  # 固定动效资源与许可标识
+  motion.html / toolkit.html
+  assets/  # 脚本、样式、图标与紧凑JSON，文件名带内容指纹
+  vendor/  # 第三方许可标识
   data/prompt-library.json
   data/motion-library.json
+  data/toolkit-library.json
 ```
 
 静态产物可以单独托管，浏览器直接读取 JSON，不依赖本地 `/health` 或 Python API。
+
+页面提前请求当前目录数据与模块依赖，避免等脚本执行后才开始下载。Animate.css 在首次播放 CSS 示例时加载；GSAP、ScrollTrigger 和 Flip 仅在对应演示需要时加载。首次播放可能短暂等待资源下载，后续播放复用资源。
+
+构建为资源及其依赖生成内容指纹，并同步替换 HTML、模块导入和数据请求地址。`vercel.json` 对 `/assets/` 设置一年不可变缓存，页面与兼容的 `/data/` 地址每次校验；数据更新后会生成新资源地址。其他静态托管平台也应采用相同缓存策略，不能给无指纹的页面设置长期不可变缓存。开发服务继续校验源码，刷新即可看到修改。
 
 本地预览与单独检查：
 

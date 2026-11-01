@@ -1,5 +1,5 @@
 import { composeMotionPrompt, filterMotion, motionCode, normalizeDuration } from './motion-utils.js';
-import { createVisual, playGsap } from './motion-engine.js';
+import { createVisual, loadAnimateStyles, playGsap } from './motion-engine.js';
 
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
@@ -71,6 +71,8 @@ async function play(effect, card) {
   $('#motion-status').textContent = `正在演示 ${effect.name}；播放新示例会回收旧动画。`;
   try {
     if (effect.library === 'animate') {
+      await loadAnimateStyles();
+      if (!isCurrent() || run.controller.signal.aborted) return;
       const target = stage.querySelector('.demo-object');
       target.style.animationDuration = `${duration}ms`;
       target.style.animationIterationCount = '1';
@@ -172,7 +174,7 @@ function events() {
 
 async function init() {
   try {
-    const response = await fetch('/data/motion-library.json', { cache: 'no-cache' });
+    const response = await fetch('/data/motion-library.json');
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     state.catalog = await response.json();
     $('#effect-total').textContent = state.catalog.effects.length; $('#term-total').textContent = state.catalog.glossary.length;

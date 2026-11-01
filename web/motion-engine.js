@@ -1,4 +1,18 @@
 let enginePromise;
+let animateStylesPromise;
+const pluginPromises = new Map();
+
+export function loadAnimateStyles() {
+  animateStylesPromise ||= new Promise((resolve, reject) => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = new URL('./vendor/animate.min.css', import.meta.url).href;
+    link.onload = resolve;
+    link.onerror = () => { link.remove(); reject(new Error('Animate.css is unavailable')); };
+    document.head.append(link);
+  }).catch(error => { animateStylesPromise = undefined; throw error; });
+  return animateStylesPromise;
+}
 
 // The official minified browser builds are UMD scripts, not strict ESM modules.
 // Load them as classic scripts so their browser-global initialization is valid.
@@ -13,16 +27,25 @@ function loadClassic(relative) {
   });
 }
 
-async function loadEngine() {
+async function loadEngine(demo) {
   enginePromise ||= (async () => {
     await loadClassic('./vendor/gsap.min.js');
-    await Promise.all([loadClassic('./vendor/ScrollTrigger.min.js'), loadClassic('./vendor/Flip.min.js')]);
-    const { gsap, ScrollTrigger, Flip } = window;
-    if (!gsap || !ScrollTrigger || !Flip) throw new Error('GSAP resources are unavailable');
-    gsap.registerPlugin(ScrollTrigger, Flip);
-    return { gsap, ScrollTrigger, Flip };
+    if (!window.gsap) throw new Error('GSAP resource is unavailable');
+    return window.gsap;
   })().catch(error => { enginePromise = undefined; throw error; });
-  return enginePromise;
+  const gsap = await enginePromise;
+  const plugin = ['scrollTrigger', 'scrub', 'pin'].includes(demo) ? 'ScrollTrigger' : demo === 'flip' ? 'Flip' : null;
+  if (plugin) {
+    if (!pluginPromises.has(plugin)) {
+      const resource = plugin === 'Flip' ? './vendor/Flip.min.js' : './vendor/ScrollTrigger.min.js';
+      pluginPromises.set(plugin, loadClassic(resource).then(() => {
+        if (!window[plugin]) throw new Error(`${plugin} resource is unavailable`);
+        gsap.registerPlugin(window[plugin]);
+      }).catch(error => { pluginPromises.delete(plugin); throw error; }));
+    }
+    await pluginPromises.get(plugin);
+  }
+  return { gsap, ScrollTrigger: window.ScrollTrigger, Flip: window.Flip };
 }
 
 export function createVisual(effect) {
@@ -59,7 +82,7 @@ export function createVisual(effect) {
 }
 
 export async function playGsap({ effect, stage, duration, onComplete, isCurrent, signal }) {
-  const { gsap, ScrollTrigger, Flip } = await loadEngine();
+  const { gsap, ScrollTrigger, Flip } = await loadEngine(effect.demo);
   if (!isCurrent() || signal.aborted) return null;
   const targets = [...stage.querySelectorAll('.demo-object')];
   const target = targets[0];
